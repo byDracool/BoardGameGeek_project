@@ -18,7 +18,7 @@ def index() -> rx.Component:
     
     return (
         rx.image(src="/bgg-logo.jpg", width="400px", height="auto", align="center", justify="center"),
-        rx.image(src="/bgg-banner.png", width="400px", height="auto", align="center", justify="center"),
+        rx.image(src="/bgg-banner.png", width="auto", height="auto", align="center", justify="center"),
         rx.container(
             rx.theme(color_mode="dark", accent_color="blue"),
             
