@@ -1,0 +1,3 @@
+ cd 'D:\PycharmProjects\BGG_project'
+venv\Scripts\activate
+reflex init
