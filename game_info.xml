@@ -35,36 +35,36 @@
 										      	               				<yearpublished value="2018" />
 						               				<minplayers value="1" />
 						               				<maxplayers value="4" />
-						      			<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="988">
+						      			<poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="991">
 			
 		<results numplayers="1">		
-					<result value="Best" numvotes="20" />
-					<result value="Recommended" numvotes="351" />
+					<result value="Best" numvotes="21" />
+					<result value="Recommended" numvotes="352" />
 					<result value="Not Recommended" numvotes="196" />
 				</results>					
 			
 		<results numplayers="2">		
-					<result value="Best" numvotes="285" />
-					<result value="Recommended" numvotes="527" />
+					<result value="Best" numvotes="287" />
+					<result value="Recommended" numvotes="528" />
 					<result value="Not Recommended" numvotes="51" />
 				</results>					
 			
 		<results numplayers="3">		
-					<result value="Best" numvotes="513" />
-					<result value="Recommended" numvotes="283" />
+					<result value="Best" numvotes="515" />
+					<result value="Recommended" numvotes="284" />
 					<result value="Not Recommended" numvotes="13" />
 				</results>					
 			
 		<results numplayers="4">		
-					<result value="Best" numvotes="165" />
-					<result value="Recommended" numvotes="439" />
-					<result value="Not Recommended" numvotes="145" />
+					<result value="Best" numvotes="166" />
+					<result value="Recommended" numvotes="440" />
+					<result value="Not Recommended" numvotes="146" />
 				</results>					
 			
 		<results numplayers="4+">		
 					<result value="Best" numvotes="1" />
 					<result value="Recommended" numvotes="17" />
-					<result value="Not Recommended" numvotes="450" />
+					<result value="Not Recommended" numvotes="451" />
 				</results>					
 	</poll>
 <poll-summary name="suggested_numplayers"  title="User Suggested Number of Players">
@@ -533,6 +533,14 @@
 
 			
 		
+					<link type="boardgameexpansion" id="437203" value="Everdell: Promo Compilation Pack" />
+		
+									
+				
+		 			
+
+			
+		
 					<link type="boardgameexpansion" id="261142" value="Everdell: Rugwort Pack" />
 		
 									
@@ -954,6 +962,14 @@
 			
 		
 					<link type="boardgameimplementation" id="394106" value="Everdell Farshore" />
+		
+									
+				
+		 			
+
+			
+		
+					<link type="boardgameimplementation" id="436821" value="Everdell Silverfrost" />
 		
 									
 				

@@ -1,2 +1,7 @@
+__pycache__/
+.web
+assets/external/
+*.db
+*.py[cod]
 **/__pycache__
 **/Notas.txt

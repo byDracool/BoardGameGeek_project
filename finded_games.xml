@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><items total="35" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">			<item type="boardgame" id="199792">
+<?xml version="1.0" encoding="utf-8"?><items total="38" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">			<item type="boardgame" id="199792">
 			<name type="primary" value="Everdell"/>			
 							<yearpublished value="2018" />
 					</item>
@@ -9,6 +9,10 @@
 			<item type="boardgame" id="394106">
 			<name type="primary" value="Everdell Farshore"/>			
 							<yearpublished value="2023" />
+					</item>
+			<item type="boardgame" id="436821">
+			<name type="primary" value="Everdell Silverfrost"/>			
+							<yearpublished value="2025" />
 					</item>
 			<item type="boardgame" id="289057">
 			<name type="primary" value="Everdell: Bellfaire"/>			
@@ -53,6 +57,10 @@
 			<item type="boardgame" id="292794">
 			<name type="primary" value="Everdell: Pearlbrook – Freshwater Pack"/>			
 							<yearpublished value="2020" />
+					</item>
+			<item type="boardgame" id="437203">
+			<name type="primary" value="Everdell: Promo Compilation Pack"/>			
+							<yearpublished value="2025" />
 					</item>
 			<item type="boardgame" id="261142">
 			<name type="primary" value="Everdell: Rugwort Pack"/>			
@@ -117,6 +125,10 @@
 			<item type="boardgameexpansion" id="292794">
 			<name type="primary" value="Everdell: Pearlbrook – Freshwater Pack"/>			
 							<yearpublished value="2020" />
+					</item>
+			<item type="boardgameexpansion" id="437203">
+			<name type="primary" value="Everdell: Promo Compilation Pack"/>			
+							<yearpublished value="2025" />
 					</item>
 			<item type="boardgameexpansion" id="261142">
 			<name type="primary" value="Everdell: Rugwort Pack"/>			
