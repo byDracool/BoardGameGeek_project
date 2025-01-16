@@ -18,3 +18,13 @@ BASE_STYLE = {
         "_hover": {}
     }
 }
+
+pretitle_style = dict(
+    size="6",
+    padding_top=Size.MEDIUM.value
+)
+
+title_style = dict(
+    size="8",
+    padding_top=Size.MEDIUM.value
+)
