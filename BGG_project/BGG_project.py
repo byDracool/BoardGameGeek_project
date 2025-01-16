@@ -18,15 +18,14 @@ def index() -> rx.Component:
         rx.center(
             rx.vstack(                
                     header(),
-                    rx.spacer(),
                     finder(),
                     align="center",
-                    margin_y=styles.Size.DEFAULT
+                    margin_y=styles.Spacer.DEFAULT
             )
         ),
         footer(),
         rx.theme(color_mode="dark", accent_color="blue"),
-        margin_y=styles.Size.SMALL
+        margin_y=styles.Spacer.SMALL
     )
 
 
