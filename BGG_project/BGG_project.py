@@ -3,6 +3,7 @@ from BGG_project.components.navbar import navbar
 from BGG_project.components.footer import footer
 from BGG_project.views.header.header import header
 from BGG_project.views.finder.finder import finder
+import BGG_project.styles.styles as styles
 
 
 class State(rx.State):
@@ -14,13 +15,17 @@ def index() -> rx.Component:
     
     return rx.box(
         navbar(),
-        rx.vstack(                
-                header(),
-                finder(),
-                footer(),
-                rx.theme(color_mode="dark", accent_color="blue"),
-                align="center"
-        )
+        rx.center(
+            rx.vstack(                
+                    header(),
+                    finder(),
+                    align="center",
+                    margin_y=styles.Spacer.DEFAULT
+            )
+        ),
+        footer(),
+        rx.theme(color_mode="dark", accent_color="blue"),
+        margin_y=styles.Spacer.SMALL
     )
 
 
