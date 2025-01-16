@@ -12,13 +12,15 @@ class State(rx.State):
 def index() -> rx.Component:
     # Welcome Page (Index)
     
-    return rx.vstack(
+    return rx.box(
         navbar(),
-        header(),
-        finder(),
-        footer(),
-        rx.theme(color_mode="dark", accent_color="blue"),
-        align="center"
+        rx.vstack(                
+                header(),
+                finder(),
+                footer(),
+                rx.theme(color_mode="dark", accent_color="blue"),
+                align="center"
+        )
     )
 
 
