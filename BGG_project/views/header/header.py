@@ -1,12 +1,16 @@
 import reflex as rx
+import BGG_project.styles.styles as styles
 
 
 def header() -> rx.Component:
     return rx.vstack(
                 rx.text(
                     "Welcome to",
-                    size="7",
+                    style=styles.pretitle_style
                 ),
-                rx.heading("BGG boardgame finder", size="9"),
-                align="center",
+                rx.heading(
+                    "BGG boardgame finder", 
+                    style=styles.title_style
+                ),
+                align="center"
     )

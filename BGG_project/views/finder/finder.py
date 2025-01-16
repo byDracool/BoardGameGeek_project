@@ -8,9 +8,11 @@ def finder() -> rx.Component:
                     align="center",
                     size="5",
                 ),
+                rx.spacer(),
                 rx.text_area(
                     placeholder="Type here...",
                 ),
+                rx.spacer(),
                 rx.link(
                     rx.button(
                         "Find games",
