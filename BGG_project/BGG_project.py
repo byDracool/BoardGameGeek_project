@@ -17,9 +17,7 @@ def index() -> rx.Component:
     # Welcome Page (Index)
     
     return (
-        rx.container(
-            rx.image(src="/face-logo.png", width="200px", height="auto", align="center", justify="center"),
-        ),
+        rx.image(src="/face-logo.png", width="200px", height="auto", align="center", justify="center"),
         rx.container(
             rx.theme(color_mode="dark", accent_color="blue"),
             
@@ -32,14 +30,19 @@ def index() -> rx.Component:
                 rx.heading("BGG boardgame finder", size="9", align="center"),
                 rx.image(src=image, width="100px", height="auto"),
                 rx.text(
-                    "Get started by editing ",
-                    rx.code(f"{config.app_name}/{config.app_name}.py"),
+                    "Write the game name you are looking for:",
                     align="center",
                     size="5",
                 ),
+                rx.text_area(
+                    placeholder="Type here...",
+                ),
                 rx.link(
-                    rx.button("Check out our docs!"),
-                    href="https://reflex.dev/docs/getting-started/introduction/",
+                    rx.button(
+                        "Find games",
+                        rx.icon("search")
+                        ),
+                    #href="https://reflex.dev/docs/getting-started/introduction/",
                     is_external=True,
                 ),
                 spacing="5",
