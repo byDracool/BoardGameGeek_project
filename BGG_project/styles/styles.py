@@ -21,11 +21,11 @@ BASE_STYLE = {
 }
 
 pretitle_style = dict(
-    size="9",
+    size=Size.DEFAULT.value,
     padding_top=Size.SMALL.value
 )
 
 title_style = dict(
-    size="13",
-    padding_top=Size.EXTRA_SMALL.value
+    size=Size.BIG.value,
+    padding_top=Size.EXTRA_SMALL.value,
 )

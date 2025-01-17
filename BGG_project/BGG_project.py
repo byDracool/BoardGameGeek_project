@@ -24,7 +24,7 @@ def index() -> rx.Component:
             )
         ),
         footer(),
-        rx.theme(color_mode="dark", accent_color="blue"),
+        #rx.theme(color_mode="dark", accent_color="blue"),
         margin_y=Size.SMALL.value
     )
 
