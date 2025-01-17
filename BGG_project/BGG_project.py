@@ -23,14 +23,13 @@ def index() -> rx.Component:
             )
         ),
         footer(),
-        
-        margin_y=Size.SMALL.value
+        #margin_y=Size.SMALL.value
     )
 
 
 app = rx.App(
     #rx.theme(color_mode="dark", accent_color="blue"),
-    #style=styles.BASE_STYLE,
+    style=styles.BASE_STYLE,
 )
 app.add_page(index)
 app._compile()

@@ -1,4 +1,5 @@
 import reflex as rx
+from BGG_project.styles.colors import TextColor as TextColor
 
 
 def navbar() -> rx.Component:
@@ -10,7 +11,8 @@ def navbar() -> rx.Component:
                 "Aquí irá login",
                 align="right",
                 justify="center",
-                size="4",               
+                size="4",
+                color=TextColor.FOOTER.value               
             ),
             width="100%",
             position= "sticky",

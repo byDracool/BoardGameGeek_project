@@ -10,12 +10,11 @@ def footer() -> rx.Component:
         rx.link(
                     "Carlos Terrez '2025",
                     href="https://carlosterrez.dev/",
-                    size="2",
+                    size="1",
                     is_external=True,
                     color=TextColor.FOOTER.value
                 ),
         reflex_logo(),
         align="center",
-        padding_top=Size.EXTRA_BIG.value,
-        color=TextColor.FOOTER.value
+        padding_top=Size.EXTRA_BIG.value
     )

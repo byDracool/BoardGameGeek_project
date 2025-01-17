@@ -3,7 +3,7 @@ from typing import Union
 from BGG_project.styles.colors import TextColor as TextColor
 
 
-def svg_logo(color: Union[str, rx.Var[str]] = rx.color_mode_cond("#110F1F", "white")):
+def svg_logo(color: Union[str, rx.Var[str]] = rx.color_mode_cond("#FFFFFF", "white")):
     """A Reflex logo SVG.
 
     Args:
@@ -53,7 +53,6 @@ def reflex_logo(**props):
                 ),
                 svg_logo(),
                 text_align="center",
-                align="center",
-                
+                align="center"
             )
 
