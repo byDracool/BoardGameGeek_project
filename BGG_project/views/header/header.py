@@ -9,12 +9,12 @@ def header() -> rx.Component:
                 rx.text(
                     "Welcome to",
                     size="7",
-                    style=styles.header_title_style
+                    style=styles.header_style
                 ),
                 rx.text(
                     "BGG boardgame finder", 
                     size="9",
-                    style=styles.header_title_style
+                    style=styles.header_style
                 ),
                 align="center"
     )

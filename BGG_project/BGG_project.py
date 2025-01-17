@@ -29,6 +29,7 @@ def index() -> rx.Component:
 
 app = rx.App(
     #rx.theme(color_mode="dark", accent_color="blue"),
+    stylesheets=styles.STYLESHEETS,
     style=styles.BASE_STYLE,
 )
 app.add_page(index)

@@ -15,7 +15,7 @@ def navbar() -> rx.Component:
                 justify="center",
                 size="4",
                 color=TextColor.FOOTER.value,
-                style=styles.navbar_title_style
+                style=styles.navbar_style
             ),
             width="100%",
             position= "sticky",

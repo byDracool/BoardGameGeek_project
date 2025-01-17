@@ -5,6 +5,14 @@ from .colors import TextColor as TextColor
 from .fonts import Font
 
 #Constants
+PORTFOLIO = "https://carlosterrez.dev/"
+
+STYLESHEETS = [
+    "https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap",
+    "https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap",
+    "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
+    "https://fonts.googleapis.com/css2?family=Jersey+15&display=swap"
+]
 
 #Sizes
 class Size(Enum):
@@ -19,6 +27,7 @@ class Size(Enum):
 
 #Styles
 BASE_STYLE = {
+    "font_family": Font.DEFAULT.value,
     "background_color":Color.BACKGROUND.value,
     rx.link: {
         "text_decoration": "none",
@@ -26,33 +35,25 @@ BASE_STYLE = {
     }
 }
 
-"""pretitle_style = dict(
-    size=Size.DEFAULT.value,
-    padding_top=Size.SMALL.value
-)
 
-title_style = dict(
-    size=Size.BIG.value,
-    padding_top=Size.EXTRA_SMALL.value,
-)"""
 
-navbar_title_style = dict(
+navbar_style = dict(
         font_family=Font.DEFAULT.value,
         font_size=Size.MEDIUM_PLUS.value
 )
 
-header_title_style = dict(
-        font_family=Font.RARA.value,
+header_style = dict(
+        font_family=Font.TITLE.value,
         color=TextColor.HEADER.value
 )
 
-finder_title_style = dict(
+finder_style = dict(
         font_family=Font.DEFAULT.value,
         color=TextColor.BODY.value,
         font_size=Size.MEDIUM_PLUS.value
 )
 
-footer_title_style = dict(
+footer_style = dict(
         font_family=Font.FOOTER.value,
         color=TextColor.FOOTER.value
 )

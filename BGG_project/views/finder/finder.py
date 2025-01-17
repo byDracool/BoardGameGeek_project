@@ -14,12 +14,12 @@ def finder() -> rx.Component:
                     size="5",
                     padding_top=Size.DEFAULT.value,
                     spacing=Size.DEFAULT.value,
-                    style=styles.finder_title_style
+                    style=styles.finder_style
                 ),
                 rx.text_area(
                     placeholder="Type here...",
                     spacing=Size.MEDIUM.value,
-                    style=styles.finder_title_style
+                    style=styles.finder_style
                 ),
                 find_icon(),
                 align="center",
