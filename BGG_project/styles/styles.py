@@ -1,5 +1,6 @@
 import reflex as rx
 from enum import Enum
+from .colors import Color as Color
 
 #Constants
 
@@ -11,9 +12,11 @@ class Size(Enum):
     DEFAULT = "2em"
     LARGE = "3em"
     BIG = "4em"
+    EXTRA_BIG = "8em"
 
 #Styles
 BASE_STYLE = {
+    "background_color":Color.BACKGROUND.value,
     rx.link: {
         "text_decoration": "none",
         "_hover": {}
