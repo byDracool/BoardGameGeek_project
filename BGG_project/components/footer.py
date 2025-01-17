@@ -3,6 +3,7 @@ from BGG_project.styles.styles import Size as Size
 from BGG_project.components.reflex_logo import reflex_logo
 from BGG_project.styles.colors import TextColor as TextColor
 from BGG_project.styles.fonts import Font as Font
+import BGG_project.styles.styles as styles
 
 
 def footer() -> rx.Component:
@@ -13,10 +14,10 @@ def footer() -> rx.Component:
                     href="https://carlosterrez.dev/",
                     size="1",
                     is_external=True,
-                    color=TextColor.FOOTER.value,
-                    font_family=Font.FOOTER
+                    style=styles.footer_title_style
                 ),
         reflex_logo(),
+        margin="0",
         align="center",
         padding_top=Size.EXTRA_BIG.value
     )
