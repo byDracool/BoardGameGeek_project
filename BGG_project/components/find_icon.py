@@ -1,0 +1,14 @@
+import reflex as rx
+from BGG_project.styles.styles import Size as Size
+
+
+def find_icon() -> rx.Component:
+    return rx.link(
+                    rx.button(
+                        "Find games",
+                        rx.icon("search")
+                        ),
+                    padding_top=Size.SMALL.value,
+                    href="https://reflex.dev/docs/getting-started/introduction/",
+                    is_external=True
+                )

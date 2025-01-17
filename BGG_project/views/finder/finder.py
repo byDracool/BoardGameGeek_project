@@ -1,4 +1,6 @@
 import reflex as rx
+from BGG_project.styles.styles import Size as Size
+from BGG_project.components.find_icon import find_icon
 
 
 def finder() -> rx.Component:
@@ -7,18 +9,13 @@ def finder() -> rx.Component:
                     "Write the game name you are looking for:",
                     align="center",
                     size="5",
+                    padding_top=Size.MEDIUM.value,
+                    spacing=Size.MEDIUM.value
                 ),
-                rx.spacer(),
                 rx.text_area(
                     placeholder="Type here...",
+                    spacing=Size.SMALL.value
                 ),
-                rx.spacer(),
-                rx.link(
-                    rx.button(
-                        "Find games",
-                        rx.icon("search")
-                        ),
-                    href="https://reflex.dev/docs/getting-started/introduction/",
-                ),
+                find_icon(),
                 align="center",
     )

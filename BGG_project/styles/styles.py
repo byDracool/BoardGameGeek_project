@@ -5,6 +5,7 @@ from enum import Enum
 
 #Sizes
 class Size(Enum):
+    EXTRA_SMALL = "0.2em"
     SMALL = "0.5em"
     MEDIUM = "1em"
     DEFAULT = "2em"
@@ -20,11 +21,11 @@ BASE_STYLE = {
 }
 
 pretitle_style = dict(
-    size="6",
-    padding_top=Size.MEDIUM.value
+    size="9",
+    padding_top=Size.SMALL.value
 )
 
 title_style = dict(
-    size="8",
-    padding_top=Size.MEDIUM.value
+    size="13",
+    padding_top=Size.EXTRA_SMALL.value
 )

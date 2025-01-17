@@ -3,7 +3,8 @@ import reflex as rx
 
 def navbar() -> rx.Component:
     return rx.hstack(
-                rx.image(src="/face-logo.png", width="200px", height="auto", align="start", justify="center"),
+                rx.image(src="/face-logo.png", width="200px", height="auto", align="left", justify="center"),
+                #ESTO HAY QUE CAMBIARLO POR EL LOGIN
                 rx.text(
                     "Aquí irá login",
                     align="right",
@@ -11,5 +12,6 @@ def navbar() -> rx.Component:
                     size="4",               
                 ),
                 position= "sticky",
-                z_index="999"
+                z_index="999",
+                top="0"
     )
