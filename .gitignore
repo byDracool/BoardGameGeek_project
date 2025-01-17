@@ -5,3 +5,4 @@ assets/external/
 *.py[cod]
 **/__pycache__
 **/Notas.txt
+node_modules
