@@ -7,11 +7,12 @@ from BGG_project.styles.colors import TextColor as TextColor
 def footer() -> rx.Component:
     return rx.vstack(
         rx.spacer(),
-        rx.text(
+        rx.link(
                     "Carlos Terrez '2025",
+                    href="https://carlosterrez.dev/",
                     size="2",
-                    color=TextColor.FOOTER.value,
-                    margin_bottom=Size.SMALL.value
+                    is_external=True,
+                    color=TextColor.FOOTER.value
                 ),
         reflex_logo(),
         align="center",

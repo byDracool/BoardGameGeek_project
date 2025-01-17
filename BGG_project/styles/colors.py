@@ -11,4 +11,5 @@ class TextColor(Enum):
     HEADER = "#FFC300"
     BODY = "#FFFFFF"
     FOOTER = "#A3ABB2"
+    LINK = "001CE7"
 
