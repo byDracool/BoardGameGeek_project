@@ -1,6 +1,7 @@
 import reflex as rx
 from typing import Union
 from BGG_project.styles.colors import TextColor as TextColor
+import BGG_project.styles.styles as styles
 
 
 def svg_logo(color: Union[str, rx.Var[str]] = rx.color_mode_cond("#FFFFFF", "white")):
@@ -49,10 +50,12 @@ def reflex_logo(**props):
                 rx.text(
                     "Built with",
                     size="1",
-                    color=TextColor.LINK.value
+                    color=TextColor.LINK.value,
+                    style=styles.footer_style
                 ),
                 svg_logo(),
                 text_align="center",
+                style=styles.footer_style,
                 align="center"
             )
 
