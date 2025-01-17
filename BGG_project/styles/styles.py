@@ -26,7 +26,7 @@ BASE_STYLE = {
     }
 }
 
-pretitle_style = dict(
+"""pretitle_style = dict(
     size=Size.DEFAULT.value,
     padding_top=Size.SMALL.value
 )
@@ -34,7 +34,7 @@ pretitle_style = dict(
 title_style = dict(
     size=Size.BIG.value,
     padding_top=Size.EXTRA_SMALL.value,
-)
+)"""
 
 navbar_title_style = dict(
         font_family=Font.DEFAULT.value,
@@ -42,7 +42,7 @@ navbar_title_style = dict(
 )
 
 header_title_style = dict(
-        font_family=Font.TITLE.value,
+        font_family=Font.RARA.value,
         color=TextColor.HEADER.value
 )
 

@@ -11,7 +11,7 @@ def header() -> rx.Component:
                     size="7",
                     style=styles.header_title_style
                 ),
-                rx.heading(
+                rx.text(
                     "BGG boardgame finder", 
                     size="9",
                     style=styles.header_title_style
