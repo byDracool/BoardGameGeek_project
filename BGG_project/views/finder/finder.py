@@ -9,12 +9,12 @@ def finder() -> rx.Component:
                     "Write the game name you are looking for:",
                     align="center",
                     size="5",
-                    padding_top=Size.MEDIUM.value,
-                    spacing=Size.MEDIUM.value
+                    padding_top=Size.DEFAULT.value,
+                    spacing=Size.DEFAULT.value
                 ),
                 rx.text_area(
                     placeholder="Type here...",
-                    spacing=Size.SMALL.value
+                    spacing=Size.MEDIUM.value
                 ),
                 find_icon(),
                 align="center",
