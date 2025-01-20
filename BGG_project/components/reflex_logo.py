@@ -33,7 +33,8 @@ def svg_logo(color: Union[str, rx.Var[str]] = rx.color_mode_cond("#FFFFFF", "whi
         width="56",
         height="12",
         viewBox="0 0 56 12",
-        fill=color
+        fill=color,
+        alt="REFLEX logo"
     )
 
 
