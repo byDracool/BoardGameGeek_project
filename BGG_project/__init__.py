@@ -1,4 +1,4 @@
-from .login import login
+from .pages.login import login
 
 
 login()

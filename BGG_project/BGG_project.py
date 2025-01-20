@@ -1,5 +1,4 @@
 import reflex as rx
-from .login import login
 from BGG_project.components.navbar import navbar
 from BGG_project.components.footer import footer
 from BGG_project.views.header.header import header
@@ -33,4 +32,7 @@ app = rx.App(
     stylesheets=styles.STYLESHEETS,
     style=styles.BASE_STYLE,
 )
-app.add_page(login)
+
+app.add_page(index)
+
+
