@@ -8,6 +8,7 @@ def find_icon() -> rx.Component:
                         "Find games",
                         rx.icon("search")
                         ),
+                    alt="Find icon",    
                     padding_top=Size.SMALL.value,
                     href="https://reflex.dev/docs/getting-started/introduction/",
                     is_external=True

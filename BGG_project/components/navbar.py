@@ -6,7 +6,14 @@ import BGG_project.styles.styles as styles
 
 def navbar() -> rx.Component:
     return rx.flex(
-            rx.image(src="/face-logo.png", width="200px", height="auto", align="left", justify="center"),
+            rx.image(
+                src="/face-logo.png", 
+                width="200px", 
+                height="auto", 
+                align="left", 
+                justify="center", 
+                alt="BoardGameGeek logo. Drawing of character with glasses"
+                ),
             rx.spacer(),
             #ESTO HAY QUE CAMBIARLO POR EL LOGIN
             rx.text(
@@ -17,7 +24,7 @@ def navbar() -> rx.Component:
                 color=TextColor.FOOTER.value,
                 style=styles.navbar_style
             ),
-            width="100%",
+            width="auto",
             position= "sticky",
             z_index="999",
             top="0"

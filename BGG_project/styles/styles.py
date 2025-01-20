@@ -10,8 +10,7 @@ PORTFOLIO = "https://carlosterrez.dev/"
 STYLESHEETS = [
     "https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap",
     "https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap",
-    "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
-    "https://fonts.googleapis.com/css2?family=Jersey+15&display=swap"
+    "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
 ]
 
 #Sizes
