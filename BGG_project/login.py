@@ -2,6 +2,7 @@ import reflex as rx
 import requests as rq
 from BGG_project.styles.colors import TextColor
 import BGG_project.styles.styles as styles
+from BGG_project.styles.styles import Size as Size
 import re
 
 
@@ -59,16 +60,17 @@ class LoginState(rx.State):
 def login() -> rx.Component:
     return rx.flex( 
         rx.vstack(
-            rx.spacer("8"),
+            rx.spacer(),
             rx.hstack(
                 rx.image(
                         src="/login.png",
                         width="200px", 
                         height="auto",
                         align="center", 
-                        justify="center"
+                        justify="center",
+                        padding_top=Size.EXTRA_BIG.value
                         ),
-                rx.spacer("2"),
+                rx.spacer(),
                 rx.text(
                         "Login",
                         size="7",
@@ -107,7 +109,10 @@ def login() -> rx.Component:
                             role="alert",
                             style={"margin_top":"10px"}
                       ),
-                )
+                ),
+                on_submit=LoginState.loginService,
+                reset_on_submit=True,
+                width="80%",
             ),
             align="center",
             justify="center",                                    
