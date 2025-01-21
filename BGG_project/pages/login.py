@@ -18,7 +18,7 @@ class LoginState(rx.State):
             async with self:
                 self.loader = True
                 self.error = False
-                response = rq.post('http://localhost:8080/auth/login', json=data, headers={"Content-Type":"application/json"})
+                response = rq.post('http://localhost:3000/login/', json=data, headers={"Content-Type":"application/json"})
                 if response.status_code == 200:
                         self.response = response.json()
                         self.loader = False
@@ -62,6 +62,7 @@ def login() -> rx.Component:
         rx.vstack(
             rx.spacer(),
             rx.hstack(
+                rx.spacer(),
                 rx.image(
                         src="/login.png",
                         width="200px", 

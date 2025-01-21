@@ -8,4 +8,3 @@ class User(rx.Model, table=True):
     name: str
     username: str
     password: str
-    phone: str
