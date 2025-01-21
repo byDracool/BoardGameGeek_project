@@ -35,7 +35,7 @@ class UserState(rx.State):
     async def create_user(self, data: dict):
         async with self:
             try:
-                self.users = create_user_service(username= data["username"], password= data["password"], phone= data["phone"], name= data["name"])
+                self.users = create_user_service(username= data["username"], password= data["password"], name= data["name"])
             except BaseException as be:
                 print(be.args)
                 self.error = be.args
@@ -56,7 +56,7 @@ class UserState(rx.State):
 @rx.page(route="/user", title="user", on_load=UserState.get_all_user)
 def user_page() -> rx.Component:
     return rx.flex(
-        rx.heading("Usuarios", align="center"),
+        rx.heading("Users", align="center"),
         rx.hstack(
             buscar_user_component(),
             create_user_dialogo_component(),
@@ -77,10 +77,9 @@ def table_use(list_user: list[User]) -> rx.Component:
     return rx.table.root(
         rx.table.header(
             rx.table.row(
-                rx.table.column_header_cell("Nombre"),
+                rx.table.column_header_cell("Name"),
                 rx.table.column_header_cell("Email"),
-                rx.table.column_header_cell("Telefono"),
-                rx.table.column_header_cell("Accion"),
+                rx.table.column_header_cell("Action"),
             )
         ),
         rx.table.body(
@@ -93,7 +92,6 @@ def row_table(user:User) -> rx.Component:
     return rx.table.row(
         rx.table.cell(user.name),
         rx.table.cell(user.username),
-        rx.table.cell(user.phone),
         rx.table.cell(rx.hstack(
             delete_user_dialogo_component(user.username)
         ))
@@ -102,8 +100,8 @@ def row_table(user:User) -> rx.Component:
 
 def buscar_user_component() -> rx.Component:
     return rx.hstack(
-        rx.input(placeholder="Ingrese email", on_change=UserState.buscar_on_change),
-        rx.button("Buscar usuario", on_click=UserState.get_user_by_email)
+        rx.input(placeholder="Enter email", on_change=UserState.buscar_on_change),
+        rx.button("Find user", on_click=UserState.get_user_by_email)
     )
 
 
@@ -111,7 +109,7 @@ def create_user_form() -> rx.Component:
     return rx.form(
         rx.vstack(
             rx.input(
-                placeholder="Nombre",
+                placeholder="Name",
                 name="name"
             ),
             rx.input(
@@ -123,12 +121,8 @@ def create_user_form() -> rx.Component:
                 name="password",
                 type='password'
             ),
-            rx.input(
-                placeholder="Telefono",
-                name="phone"
-            ),
             rx.dialog.close(
-                rx.button("Guardar", type="submit")
+                rx.button("Save", type="submit")
             ),
         ),
         on_submit=UserState.create_user,
@@ -137,10 +131,10 @@ def create_user_form() -> rx.Component:
 
 def create_user_dialogo_component() -> rx.Component:
     return rx.dialog.root(
-        rx.dialog.trigger(rx.button("Crear usuario")),
+        rx.dialog.trigger(rx.button("Add user")),
         rx.dialog.content(
             rx.flex(
-                rx.dialog.title("Crear usuario"),
+                rx.dialog.title("Add user"),
                 create_user_form(),
                 justify="center",
                 align="center",
@@ -148,7 +142,7 @@ def create_user_dialogo_component() -> rx.Component:
             ),
             rx.flex(
                 rx.dialog.close(
-                    rx.button("Cancelar", color_scheme="gray", variant="soft")
+                    rx.button("Cancel", color_scheme="gray", variant="soft")
                 ),
                 spacing="3",
                 margin_top="16xp",
@@ -163,14 +157,14 @@ def delete_user_dialogo_component(username:str) -> rx.Component:
     return rx.dialog.root(
         rx.dialog.trigger(rx.button(rx.icon("trash-2"))),
         rx.dialog.content(
-                rx.dialog.title("Eliminar usuario"),
-                rx.dialog.description("Esta seguro de eliminar el usuario " + username),
+                rx.dialog.title("Delete user"),
+                rx.dialog.description("Do you want to delete user: " + username),
                 rx.flex(
                     rx.dialog.close(
-                        rx.button("Cancelar", color_scheme="gray", variant="soft")
+                        rx.button("Cancel", color_scheme="gray", variant="soft")
                     ),
                     rx.dialog.close(
-                        rx.button("Confirmar", on_click=UserState.delete_user_by_email(username)),
+                        rx.button("Confirm", on_click=UserState.delete_user_by_email(username)),
                     ),
                     spacing="3",
                     margin_top="16xp",
