@@ -56,7 +56,7 @@ class LoginState(rx.State):
         )
           
 
-@rx.page(route="/pages/login", title="login")
+@rx.page(route="/login", title="login")
 def login() -> rx.Component:
     return rx.flex( 
         rx.vstack(
