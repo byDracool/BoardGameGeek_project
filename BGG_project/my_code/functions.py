@@ -8,6 +8,7 @@ def get_user_game():
     return user_game
 
 
+# Ask for a username
 def get_username():
     username = input("Escriba el nombre de usuario: ")
     return username
@@ -115,6 +116,28 @@ def get_user_games():
     username = get_username()
     stored_games = query_text("find_user_games", username)
     search_data = requests.get(stored_games)
-    write_xml_file("stored_games.xml", search_data)
+    write_xml_file("../xml_files/stored_games.xml", search_data)
     search_data = requests.get(stored_games)
-    write_xml_file("stored_games.xml", search_data)
+    write_xml_file("../xml_files/stored_games.xml", search_data)
+
+
+# Find stored user games
+def stored_games(xml_name):
+
+    with open(xml_name, 'rt', encoding='utf-8') as file:
+        tree = ElementTree.parse(file)
+    # print(tree)
+
+    stored_boardgame_list = []
+    owned_names_list = []
+
+    
+    for node in tree.iter('item'):
+        stored_boardgame_list.append(node)
+
+    for element in stored_boardgame_list:
+        name = element.find('name').text
+        owned_names_list.append(name)
+
+    #print(owned_names_list)
+
