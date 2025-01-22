@@ -8,6 +8,11 @@ def get_user_game():
     return user_game
 
 
+def get_username():
+    username = input("Escriba el nombre de usuario: ")
+    return username
+
+
 # Reformat game name using user text
 def game_name_reformat(user_text):
     user_text = user_text.lower()
@@ -21,6 +26,8 @@ def query_text(type_of_query, data):
         query = ("https://www.boardgamegeek.com/xmlapi2/search?query=" + data)
     elif type_of_query == "open_url_with_id":
         query = ("https://www.boardgamegeek.com/xmlapi2/thing?id=" + data)
+    elif type_of_query == "find_user_games":
+        query = ("https://www.boardgamegeek.com/xmlapi2/collection?username=" + data + "&subtype=boardgame&own=1")
     else:
         pass
     return query
@@ -101,3 +108,13 @@ def get_game_info_xml(game_id):
     game_page = query_text("open_url_with_id", game_id)
     search_data = requests.get(game_page)
     write_xml_file("game_info.xml", search_data)
+
+
+# Obtains user games(Its necessary execute it 2 times for working)
+def get_user_games():
+    username = get_username()
+    stored_games = query_text("find_user_games", username)
+    search_data = requests.get(stored_games)
+    write_xml_file("stored_games.xml", search_data)
+    search_data = requests.get(stored_games)
+    write_xml_file("stored_games.xml", search_data)

@@ -1,6 +1,5 @@
 import reflex as rx
 from BGG_project.pages.index import index
-from BGG_project.pages.login import login
 import BGG_project.styles.styles as styles
 
 
@@ -10,7 +9,6 @@ app = rx.App(
     style=styles.BASE_STYLE,
 )
 
-#app.add_page(index)
-app.add_page(login)
+app.add_page(index)
 
 
