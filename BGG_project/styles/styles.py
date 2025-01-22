@@ -7,6 +7,7 @@ from .fonts import Font
 #Constants
 PORTFOLIO = "https://carlosterrez.dev/"
 GITHUB_REPO = "https://github.com/byDracool/BoardGameGeek_project.git"
+HOME = "http://localhost:3000"
 
 STYLESHEETS = [
     "https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap",

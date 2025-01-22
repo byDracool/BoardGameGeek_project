@@ -11,7 +11,7 @@ class State(rx.State):
     pass
 
 
-@rx.page(route="/home", title="home")
+@rx.page(route="/", title="home")
 def index() -> rx.Component:  
     return rx.box(
         navbar(),

@@ -2,6 +2,7 @@ import reflex as rx
 from BGG_project.styles.colors import TextColor as TextColor
 from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
+from BGG_project.styles.styles import HOME
 
 
 def navbar() -> rx.Component:
@@ -15,6 +16,14 @@ def navbar() -> rx.Component:
                 alt="BoardGameGeek logo. Drawing of character with glasses"
                 ),
             rx.spacer(),
+            rx.link(
+                    "Home",
+                    href=HOME,
+                    size="4",
+                    is_external=False,
+                    style=styles.navbar_style,
+                    spacing="6"
+                    ),                        
             #ESTO HAY QUE CAMBIARLO POR EL LOGIN
             rx.text(
                 "Aquí irá login",

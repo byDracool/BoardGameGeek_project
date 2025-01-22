@@ -31,5 +31,5 @@ def footer() -> rx.Component:
         reflex_logo(),
         margin="0",
         align="center",
-        padding_top=Size.EXTRA_BIG.value
+        padding_top=Size.BIG.value
     )

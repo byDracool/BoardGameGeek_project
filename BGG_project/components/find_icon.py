@@ -13,3 +13,16 @@ def find_icon() -> rx.Component:
                     href="https://reflex.dev/docs/getting-started/introduction/",
                     is_external=True
                 )
+
+
+def find_user() -> rx.Component:
+    return rx.link(
+                    rx.button(
+                        "Find user games",
+                        rx.icon("user-search")
+                        ),
+                    alt="Find BGG user",    
+                    padding_top=Size.SMALL.value,
+                    href="https://reflex.dev/docs/getting-started/introduction/",
+                    is_external=True
+                )
