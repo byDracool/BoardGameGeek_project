@@ -112,8 +112,8 @@ def get_game_info_xml(game_id):
 
 
 # Obtains user games(Its necessary execute it 2 times for working)
-def get_user_games():
-    username = get_username()
+def get_user_games(username):
+    #username = get_username()
     stored_games = query_text("find_user_games", username)
     search_data = requests.get(stored_games)
     write_xml_file("../xml_files/stored_games.xml", search_data)
