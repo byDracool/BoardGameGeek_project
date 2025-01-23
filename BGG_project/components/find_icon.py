@@ -19,7 +19,8 @@ def find_user() -> rx.Component:
     return rx.link(
                     rx.button(
                         "Find user games",
-                        rx.icon("user-search")
+                        rx.icon("user-search"),
+                        type="submit"
                         ),
                     alt="Find BGG user",    
                     padding_top=Size.SMALL.value,
