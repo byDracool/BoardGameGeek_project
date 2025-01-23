@@ -139,5 +139,5 @@ def stored_games(xml_name):
         name = element.find('name').text
         owned_names_list.append(name)
 
-    #print(owned_names_list)
+    return owned_names_list
 
