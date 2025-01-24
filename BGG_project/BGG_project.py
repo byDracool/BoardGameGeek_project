@@ -1,6 +1,7 @@
 import reflex as rx
 from BGG_project.pages.index import index
 from BGG_project.pages.owned_user_games import stored_games
+from BGG_project.pages.finded_games import finded_games
 import BGG_project.styles.styles as styles
 
 
@@ -12,3 +13,4 @@ app = rx.App(
 
 app.add_page(index)
 app.add_page(stored_games)
+app.add_page(finded_games)

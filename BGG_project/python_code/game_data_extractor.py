@@ -1,5 +1,6 @@
 from xml.etree import ElementTree
-import re, boardgame
+import re
+from BGG_project.python_code import boardgame
 
 
 def game_data_extractor():
