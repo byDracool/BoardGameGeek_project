@@ -2,14 +2,26 @@ import reflex as rx
 from BGG_project.styles.styles import Size as Size
 import BGG_project.styles.styles as styles
 from BGG_project.components.navbar import navbar
+from BGG_project.components.footer import footer
+from BGG_project.python_code.functions import *
 
 
-lista_prueba = ['1911 Amundsen vs Scott', '5-Minute Dungeon', '5-Minute Dungeon: Curses! Foiled Again!', '7 Wonders Duel', '7 Wonders Duel: Pantheon', 
-                'Aftermath', 'Agricola', 'Amun-Re', 'Ankh: Gods of Egypt', 'Ankh: Gods of Egypt – Guardians Set', 'Ankh: Gods of Egypt – Pantheon', 
-                'Ankh: Gods of Egypt – Pharaoh', 'Ankh: Gods of Egypt – Tomb of Wonders', 'Architects of the West Kingdom', 'Asante', 'Ascension: Realms Unraveled', 
-                'Azul', 'Azul: Stained Glass of Sintra', 'Bandido', 'Barony', 'Bears vs Babies']
+@rx.event
+def username():
+    path = "BGG_project\\txt_files\\username.txt"
+    with open(path, 'r') as file:
+        username = file.read()
+    return username
 
-username = "byDracool"
+@rx.event
+def generate_list():
+    owned_names_list = []
+    path = "BGG_project\\txt_files\\owned_names_list.txt"
+    with open(path, "r") as file:
+        text = file.read()
+        text = text.rstrip(text[-1])
+        owned_names_list = text.split(",")
+    return owned_names_list
 
 
 @rx.page(route="/owned_games", title="Owned games")
@@ -19,7 +31,7 @@ def stored_games() -> rx.Component:
         rx.center(
             rx.vstack(
                     rx.text(
-                        "User  " + "'" + username + "'",
+                        "User  " + "'" + username() + "'",
                         align="center",
                         justify="center",
                         size="5",
@@ -28,17 +40,19 @@ def stored_games() -> rx.Component:
                     ),
                     rx.text(
                         "Games stored in BGG:",
-                        align="center",
-                        justify="center",
+                        
                         size="5",
                         padding_top=Size.EXTRA_SMALL.value,
                         spacing=Size.DEFAULT.value,
                         style=styles.header_style
                     ),
-                    rx.list(
-                        [rx.list.item(game) for game in lista_prueba],
+                    rx.list.ordered(
+                        [rx.list.item(game) for game in (generate_list())],
                         padding_top=Size.DEFAULT.value,
                     ),
+            align="center",
+            justify="center",        
             ),
-        )
+        ),
+        footer(),
     ) 

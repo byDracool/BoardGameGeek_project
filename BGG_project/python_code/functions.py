@@ -1,5 +1,7 @@
 import requests
 from xml.etree import ElementTree
+import json
+#from BGG_project.python_code.game_data_extractor import game_data_extractor as extractor
 
 
 # Ask user for a game
@@ -16,6 +18,7 @@ def get_username():
 
 # Reformat game name using user text
 def game_name_reformat(user_text):
+    user_text = str(user_text)
     user_text = user_text.lower()
     user_text = user_text.replace(" ", "-")
     return user_text
@@ -23,6 +26,7 @@ def game_name_reformat(user_text):
 
 # Returns a query (str)
 def query_text(type_of_query, data):
+    data = str(data)
     if type_of_query == "find_games_with_name":
         query = ("https://www.boardgamegeek.com/xmlapi2/search?query=" + data)
     elif type_of_query == "open_url_with_id":
@@ -43,16 +47,39 @@ def find_games(user_text):
     # print(search_data.text)
     return search_data
 
+
+# Creates a txt file with user owned game names
+def write_txt_file(txt_name, data):
+    path = "BGG_project\\txt_files\\" + txt_name
+    file = open(path, "w+")
+    if txt_name != "username.txt":
+        for value in data:
+            file.write(value + ",")
+    else:
+        for value in data:
+            file.write(value)            
+    file.close()  
+
+
 # Open the file and overwrite the data we have extracted
 def write_xml_file(xml_name, search_data):
-    with open(xml_name, "w+", encoding='utf-8') as game_results:
+    path = "BGG_project\\xml_files\\" + xml_name
+    with open(path, "w+", encoding='utf-8') as game_results:
         game_results.write(search_data.text)
         game_results.close()
 
+
+def write_json_file(json_name, search_data: dict):
+    path = "BGG_project\\json_files\\" + json_name
+    with open(path, "w+", encoding='utf-8') as json_file:
+        json.dump(search_data, json_file)
+
+
 # Discard not boardgame/boardgame explansions elements
 def finded_games_xml_cleaner(xml_name):
+    path = "BGG_project\\xml_files\\" + xml_name
 
-    with open(xml_name, 'rt', encoding='utf-8') as file:
+    with open(path, 'rt', encoding='utf-8') as file:
         tree = ElementTree.parse(file)
     # print(tree)
 
@@ -86,7 +113,6 @@ def finded_games_xml_cleaner(xml_name):
         find_result_dict[id_list[counter]] = boardgame_list[counter]
         counter += 1
 
-    print(find_result_dict.items())
     return find_result_dict
 
 
@@ -112,19 +138,18 @@ def get_game_info_xml(game_id):
 
 
 # Obtains user games(Its necessary execute it 2 times for working)
-def get_user_games():
-    username = get_username()
+def get_user_games(username):
     stored_games = query_text("find_user_games", username)
     search_data = requests.get(stored_games)
-    write_xml_file("../xml_files/stored_games.xml", search_data)
-    search_data = requests.get(stored_games)
-    write_xml_file("../xml_files/stored_games.xml", search_data)
+    write_xml_file("stored_games.xml", search_data)
 
 
 # Find stored user games
 def stored_games(xml_name):
 
-    with open(xml_name, 'rt', encoding='utf-8') as file:
+    path = "BGG_project\\xml_files\\" + xml_name
+
+    with open(path, 'rt', encoding='utf-8') as file:
         tree = ElementTree.parse(file)
     # print(tree)
 
@@ -141,3 +166,46 @@ def stored_games(xml_name):
 
     return owned_names_list
 
+
+def find_games_process(game_name):
+
+    #Reformat game name and write the results into a xml file
+    search_data = find_games(game_name)
+    write_xml_file("finded_games.xml", search_data)
+
+    #Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
+    find_result_dict = finded_games_xml_cleaner("finded_games.xml")
+    
+    #Transforms dicto into a json file
+    write_json_file("find_results.json", find_result_dict)
+    
+
+
+    """#Print and enumerate finded games
+    print("\n Estos son los juegos que hemos encontrado con ese nombre...\n")
+    print_games(find_result_dict)
+
+    #Ask user for a game of the list
+    game_id = select_game(find_result_dict)
+    #print(game_id)
+
+    #Gets all game-info of BGG selected boardgame page
+    get_game_info_xml(game_id)
+
+    #Extracts an object with data from game_info_xml
+    game = extractor.game_data_extractor()"""
+    
+    """
+    print(game.image_small)
+    print(game.image)
+    print(game.description)
+    print(game.year_published)
+    print(game.min_players)
+    print(game.max_players)
+    print(game.min_playtime)
+    print(game.max_playtime)
+    print(game.min_age)
+    print(game.game_name)
+    print(game.designers)
+    print(game.artists)
+    print(game.publishers)"""
