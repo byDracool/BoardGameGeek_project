@@ -4,7 +4,7 @@ from BGG_project.components.reflex_logo import reflex_logo
 from BGG_project.styles.colors import TextColor as TextColor
 from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
-from BGG_project.styles.styles import PORTFOLIO, GITHUB_REPO
+from BGG_project.python_code.vars import PORTFOLIO, GITHUB_REPO
 
 
 def footer() -> rx.Component:
