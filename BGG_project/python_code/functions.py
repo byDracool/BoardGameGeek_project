@@ -1,19 +1,20 @@
 import requests
 from xml.etree import ElementTree
 import json
+from BGG_project.python_code.vars_and_consts import SEARCH_DATA
 #from BGG_project.python_code.game_data_extractor import game_data_extractor as extractor
 
 
 # Ask user for a game
-def get_user_game():
-    user_game = input("Qué juego desea buscar?: ")
-    return user_game
+# def get_user_game():
+#     user_game = input("Qué juego desea buscar?: ")
+#     return user_game
 
 
 # Ask for a username
-def get_username():
-    username = input("Escriba el nombre de usuario: ")
-    return username
+# def get_username():
+#     username = input("Escriba el nombre de usuario: ")
+#     return username
 
 
 # Reformat game name using user text
@@ -49,16 +50,16 @@ def find_games(user_text):
 
 
 # Creates a txt file with user owned game names
-def write_txt_file(txt_name, data):
-    path = "BGG_project\\txt_files\\" + txt_name
-    file = open(path, "w+")
-    if txt_name != "username.txt":
-        for value in data:
-            file.write(value + ",")
-    else:
-        for value in data:
-            file.write(value)            
-    file.close()  
+# def write_txt_file(txt_name, data):
+#     path = "BGG_project\\txt_files\\" + txt_name
+#     file = open(path, "w+")
+#     if txt_name != "username.txt":
+#         for value in data:
+#             file.write(value + ",")
+#     else:
+#         for value in data:
+#             file.write(value)            
+#     file.close()  
 
 
 # Open the file and overwrite the data we have extracted
@@ -140,8 +141,8 @@ def get_game_info_xml(game_id):
 # Obtains user games(Its necessary execute it 2 times for working)
 def get_user_games(username):
     stored_games = query_text("find_user_games", username)
-    search_data = requests.get(stored_games)
-    write_xml_file("stored_games.xml", search_data)
+    SEARCH_DATA = requests.get(stored_games)
+    #write_xml_file("stored_games.xml", search_data)
 
 
 # Find stored user games

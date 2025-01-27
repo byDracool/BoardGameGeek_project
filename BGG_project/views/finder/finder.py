@@ -1,22 +1,25 @@
 import reflex as rx
+from BGG_project.python_code.user import User
 from BGG_project.styles.styles import Size as Size
-from BGG_project.components.find_icon import find_icon, find_user
+from BGG_project.components.find_icons import find_icon, find_user
 from BGG_project.styles.colors import TextColor as TextColor
 from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
 from BGG_project.python_code.functions import *
+from BGG_project.python_code.vars_and_consts import USER
 
 
 class FormInputState(rx.State):
-    username: dict = {}
-    owned_names_list : list
-    game_name: str #dict = {}
+    #username: dict = {}
+    #owned_names_list : list
+    #game_name: str #dict = {}
 
 
     @rx.event
     def handle_username(self, username: dict):
-        self.username = username["input"]
-        write_txt_file("username.txt", self.username)
+        USER = User(username["input"])       
+        #self.username = username["input"]
+        #write_txt_file("username.txt", self.username)
 
 
     @rx.event
@@ -33,7 +36,7 @@ class FormInputState(rx.State):
     
 
     def get_stored_games(self):
-        get_user_games(self.username)
+        get_user_games(USER.username)
         self.owned_names_list = stored_games("stored_games.xml")
         write_txt_file("owned_names_list.txt", self.owned_names_list)
         #FormInputState.change_page_owned_games()
@@ -106,7 +109,7 @@ def username_input():
                     justify="center",
                 ),
                 #on_submit=Username(),
-                on_submit=FormInputState.handle_username,
+                on_submit=FormInputState.handle_username(),
                 on_click=FormInputState.get_stored_games(),
                 #on_click=rx.redirect(
                 #            "http://localhost:3000/owned_games/",
@@ -144,27 +147,18 @@ def finder() -> rx.Component:
                     style=styles.finder_style
                 ),
                 game_input(),
-                #rx.text_area(
-                #    placeholder="Type game here...",
-                #    spacing=Size.MEDIUM.value,
-                #    style=styles.finder_style
-                #),
-                #find_icon(),
-                rx.vstack(
-                    rx.text(
-                        "Looking for your BGG stored games?",
-                        align="center",
-                        size="5",
-                        spacing=Size.DEFAULT.value,
-                        style=styles.finder_style,
-                    ),
-                    rx.spacer(),
-                    username_input(),
+                rx.spacer(),
+                rx.text(
+                    "Looking for your BGG stored games?",
                     align="center",
-                    justify="center",
-                    padding_top=Size.BIG.value,
-                    ),
-                                 
-                    align="center",
-                    
+                    size="5",
+                    spacing=Size.DEFAULT.value,
+                    style=styles.finder_style,
+                    padding_top=Size.DEFAULT.value
+                ),
+                rx.spacer(),
+                username_input(),
+                align="center",
+                justify="center",
+                padding_top=Size.DEFAULT.value,                    
         )
