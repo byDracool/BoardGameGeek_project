@@ -19,8 +19,9 @@ def generate_list():
     path = "BGG_project\\txt_files\\owned_names_list.txt"
     with open(path, "r") as file:
         text = file.read()
-        text = text.rstrip(text[-1])
-        owned_names_list = text.split(",")
+        if text:
+            text = text.rstrip(text[-1])
+            owned_names_list = text.split(",")
     return owned_names_list
 
 

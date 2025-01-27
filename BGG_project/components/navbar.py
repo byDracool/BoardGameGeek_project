@@ -3,7 +3,7 @@ from BGG_project.styles.colors import TextColor as TextColor
 from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
 from BGG_project.styles.styles import Size as Size
-from BGG_project.styles.styles import HOME
+from BGG_project.python_code.vars import HOME
 
 
 def navbar() -> rx.Component:
@@ -27,16 +27,7 @@ def navbar() -> rx.Component:
                         spacing=Size.DEFAULT.value,
                         ),
                 rx.spacer(),        
-                ),                         
-            #ESTO HAY QUE CAMBIARLO POR EL LOGIN
-            #rx.text(
-            #    "Aquí irá login",
-            #    align="right",
-            #    justify="center",
-            #    size="4",
-            #    color=TextColor.FOOTER.value,
-            #    style=styles.navbar_style
-            #),
+                ),
             width="auto",
             position= "sticky",
             z_index="999",

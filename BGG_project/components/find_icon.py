@@ -10,10 +10,10 @@ def find_icon() -> rx.Component:
                         type="submit",
                         align="center",
                         justify="center",
-                        #on_click=rx.redirect(
-                        #    "http://localhost:3000/finded_games/", 
-                        #    is_external=False,
-                        #    )
+                        on_click=rx.redirect(
+                           "http://localhost:3000/finded_games/", 
+                           is_external=False,
+                           )
                         ),
                     alt="Find icon",    
                     padding_top=Size.SMALL.value,
