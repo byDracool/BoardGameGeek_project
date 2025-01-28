@@ -2,7 +2,7 @@ import reflex as rx
 from BGG_project.pages.index import index
 from BGG_project.pages.owned_user_games import stored_games
 from BGG_project.pages.finded_games import finded_games
-from BGG_project.python_code.vars_and_consts import *
+from BGG_project.python_code.constants import *
 import BGG_project.styles.styles as styles
 
 

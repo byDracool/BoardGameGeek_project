@@ -3,7 +3,7 @@ from BGG_project.styles.colors import TextColor as TextColor
 from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
 from BGG_project.styles.styles import Size as Size
-from BGG_project.python_code.vars_and_consts import HOME
+from BGG_project.python_code.constants import HOME
 
 
 def navbar() -> rx.Component:
