@@ -1,19 +1,43 @@
 import requests
 from xml.etree import ElementTree
 import json
+#from user import User
 #from BGG_project.python_code.game_data_extractor import game_data_extractor as extractor
 
+#Vars
+USER = []
+USERNAME = []
+SEARCH_OWNED_GAMES = []
+OWNED_NAMES_LIST = []
+
+
+class User:
+    boardgame_library = []
+
+    def __init__(self, username):
+        self.username = username
+
+    def add_game_to_boardgame_library(self, game: object):
+        self.boardgame_library.append(game)
 
 # Ask user for a game
-def get_user_game():
-    user_game = input("Qué juego desea buscar?: ")
-    return user_game
+# def get_user_game():
+#     user_game = input("Qué juego desea buscar?: ")
+#     return user_game
 
 
 # Ask for a username
-def get_username():
-    username = input("Escriba el nombre de usuario: ")
-    return username
+# def get_username():
+#     username = input("Escriba el nombre de usuario: ")
+#     return username
+
+
+def create_user(username: str):
+    user = User(username)
+    global USER
+    USER.append(user)
+    # for value in USER:
+    #     print(value.username)
 
 
 # Reformat game name using user text
@@ -26,6 +50,7 @@ def game_name_reformat(user_text):
 
 # Returns a query (str)
 def query_text(type_of_query, data):
+    query = ""
     data = str(data)
     if type_of_query == "find_games_with_name":
         query = ("https://www.boardgamegeek.com/xmlapi2/search?query=" + data)
@@ -149,7 +174,7 @@ def stored_games(xml_name):
 
     path = "BGG_project\\xml_files\\" + xml_name
 
-    with open(path, 'rt', encoding='utf-8') as file:
+    with open(path, 'w+', encoding='utf-8') as file:
         tree = ElementTree.parse(file)
     # print(tree)
 
@@ -164,7 +189,13 @@ def stored_games(xml_name):
         name = element.find('name').text
         owned_names_list.append(name)
 
-    return owned_names_list
+    global OWNED_NAMES_LIST
+    for element in owned_names_list:
+        OWNED_NAMES_LIST.append(element)
+        print(element)
+
+    print(OWNED_NAMES_LIST)
+    #return owned_names_list
 
 
 def find_games_process(game_name):

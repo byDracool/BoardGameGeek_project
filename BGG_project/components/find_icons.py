@@ -1,5 +1,6 @@
 import reflex as rx
 from BGG_project.styles.styles import Size as Size
+from BGG_project.python_code.constants import FINDED_GAMES_PAGE, OWNED_GAMES_PAGE
 
 
 def find_icon() -> rx.Component:
@@ -11,7 +12,7 @@ def find_icon() -> rx.Component:
                         align="center",
                         justify="center",
                         on_click=rx.redirect(
-                           "http://localhost:3000/finded_games/", 
+                           FINDED_GAMES_PAGE, 
                            is_external=False,
                            )
                         ),
@@ -30,7 +31,7 @@ def find_user() -> rx.Component:
                         align="center",
                         justify="center",
                         on_click=rx.redirect(
-                            "http://localhost:3000/owned_games/", 
+                            OWNED_GAMES_PAGE, 
                             is_external=False,
                             )
                         ),

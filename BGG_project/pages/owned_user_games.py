@@ -6,12 +6,13 @@ from BGG_project.components.footer import footer
 from BGG_project.python_code.functions import *
 
 
-@rx.event
-def username():
-    path = "BGG_project\\txt_files\\username.txt"
-    with open(path, 'r') as file:
-        username = file.read()
-    return username
+# @rx.event
+# def format_username():
+#     # path = "BGG_project\\txt_files\\username.txt"
+#     # with open(path, 'r') as file:
+#     #     username = file.read()
+#     printado = "User  " + "'" + USERNAME + "'"
+#     return printado
 
 @rx.event
 def generate_list():
@@ -32,7 +33,10 @@ def stored_games() -> rx.Component:
         rx.center(
             rx.vstack(
                     rx.text(
-                        "User  " + "'" + username() + "'",
+                        "AAA",
+                        #format_username(),
+                        #"User  " + "'" + username() + "'",
+                        #"User  " + "'" + USERNAME["input"] + "'",
                         align="center",
                         justify="center",
                         size="5",

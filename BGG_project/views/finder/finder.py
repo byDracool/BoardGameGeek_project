@@ -1,41 +1,57 @@
 import reflex as rx
+# from BGG_project.python_code.user import User
 from BGG_project.styles.styles import Size as Size
-from BGG_project.components.find_icon import find_icon, find_user
-from BGG_project.styles.colors import TextColor as TextColor
-from BGG_project.styles.fonts import Font as Font
+from BGG_project.components.find_icons import find_icon, find_user
+# from BGG_project.styles.colors import TextColor as TextColor
+# from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
+from BGG_project.python_code.constants import OWNED_GAMES_PAGE
 from BGG_project.python_code.functions import *
 
-
 class FormInputState(rx.State):
-    username: dict = {}
+    input_username: str
     owned_names_list : list
     game_name: str #dict = {}
 
 
     @rx.event
     def handle_username(self, username: dict):
-        self.username = username["input"]
-        write_txt_file("username.txt", self.username)
+        self.input_username = username["input"]
+        #print(self.input_username)
+        create_user(self.input_username)
+        # user = User(username["input"])
+        #
+        # global USERNAME
+        # USERNAME.append("byDracool")
+        # #print(USERNAME.items)
+        # #print(USERNAME["input"])
+        # for user in USERNAME:
+        #      print(user.username)
+        # print(USERNAME[0].username)
 
 
     @rx.event
     def handle_game_name(self, game_name: dict):
-        self.game_name = game_name["input"] 
+        self.game_name = game_name["input"]
 
 
     @rx.event
     def change_page_owned_games(self):
         return rx.redirect(
-            "http://localhost:3000/owned_games/",
+            OWNED_GAMES_PAGE,
             is_external=True,
-        )     
-    
+        )
 
-    def get_stored_games(self):
-        get_user_games(self.username)
-        self.owned_names_list = stored_games("stored_games.xml")
-        write_txt_file("owned_names_list.txt", self.owned_names_list)
+
+    def get_stored_games(self) -> None:
+        for value in USER:
+            print(value.username)
+        #print(USER[0].username)
+        #get_user_games(USERNAME[0].username)
+        stored_games("stored_games.xml")
+        # for game in prueba:
+        #     OWNED_NAMES_LIST.append(game)
+        write_txt_file("owned_names_list.txt", OWNED_NAMES_LIST)
         #FormInputState.change_page_owned_games()
 
 
@@ -64,7 +80,7 @@ def game_input():
                 ),
                 #on_submit=Username(),
                 on_submit=FormInputState.handle_game_name,
-                on_click=FormInputState.find_games(),
+                #on_click=FormInputState.find_games(),
                 reset_on_submit=True,
                 align="center",
                 justify="center",
@@ -106,7 +122,7 @@ def username_input():
                     justify="center",
                 ),
                 #on_submit=Username(),
-                on_submit=FormInputState.handle_username,
+                on_submit=FormInputState.handle_username(),
                 on_click=FormInputState.get_stored_games(),
                 #on_click=rx.redirect(
                 #            "http://localhost:3000/owned_games/",
@@ -120,9 +136,9 @@ def username_input():
             #rx.divider(),
             #rx.hstack(
             #    rx.heading("Results:"),
-            #    rx.text(
-            #        FormInputState.username
-            #    ),
+                rx.text(
+                    FormInputState.input_username
+                ),
             #    rx.text(
             #        FormInputState.owned_names_list
             #    ),
@@ -144,27 +160,18 @@ def finder() -> rx.Component:
                     style=styles.finder_style
                 ),
                 game_input(),
-                #rx.text_area(
-                #    placeholder="Type game here...",
-                #    spacing=Size.MEDIUM.value,
-                #    style=styles.finder_style
-                #),
-                #find_icon(),
-                rx.vstack(
-                    rx.text(
-                        "Looking for your BGG stored games?",
-                        align="center",
-                        size="5",
-                        spacing=Size.DEFAULT.value,
-                        style=styles.finder_style,
-                    ),
-                    rx.spacer(),
-                    username_input(),
+                rx.spacer(),
+                rx.text(
+                    "Looking for your BGG stored games?",
                     align="center",
-                    justify="center",
-                    padding_top=Size.BIG.value,
-                    ),
-                                 
-                    align="center",
-                    
+                    size="5",
+                    spacing=Size.DEFAULT.value,
+                    style=styles.finder_style,
+                    padding_top=Size.DEFAULT.value
+                ),
+                rx.spacer(),
+                username_input(),
+                align="center",
+                justify="center",
+                padding_top=Size.DEFAULT.value,                    
         )
