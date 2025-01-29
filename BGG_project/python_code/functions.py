@@ -210,7 +210,6 @@ def stored_games(xml_name):
         OWNED_NAMES_LIST.append(element)
         #print(element)
 
-    print("estas en stored")
     #print("OWNED_NAMES_LIST")
     #print(OWNED_NAMES_LIST)
     #return owned_names_list
