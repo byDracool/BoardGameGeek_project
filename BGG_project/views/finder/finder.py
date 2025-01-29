@@ -35,23 +35,28 @@ class FormInputState(rx.State):
         self.game_name = game_name["input"]
 
 
-    @rx.event
-    def change_page_owned_games(self):
-        return rx.redirect(
-            OWNED_GAMES_PAGE,
-            is_external=True,
-        )
+    # @rx.event
+    # def change_page_owned_games(self):
+    #     return rx.redirect(
+    #         OWNED_GAMES_PAGE,
+    #         is_external=True,
+    #     )
 
 
-    def get_stored_games(self) -> None:
-        for value in USER:
-            print(value.username)
-        #print(USER[0].username)
-        #get_user_games(USERNAME[0].username)
+    def get_stored_games(self):
+        #for value in USER:
+            #print(value.username)
+        get_user_games(self.input_username)
         stored_games("stored_games.xml")
-        # for game in prueba:
+        #print("SEGUNDO OWNED_NAMES_LIST")
+        #print(OWNED_NAMES_LIST)
+
+        #prueba_lista = OWNED_NAMES_LIST[0].items()
+        # for game in OWNED_NAMES_LIST.items:
         #     OWNED_NAMES_LIST.append(game)
-        write_txt_file("owned_names_list.txt", OWNED_NAMES_LIST)
+
+        #write_txt_file("owned_names_list.txt", prueba_lista)
+        #
         #FormInputState.change_page_owned_games()
 
 

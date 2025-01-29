@@ -6,7 +6,7 @@ import json
 
 #Vars
 USER = []
-USERNAME = []
+USERNAME = ""
 SEARCH_OWNED_GAMES = []
 OWNED_NAMES_LIST = []
 
@@ -26,10 +26,14 @@ class User:
 #     return user_game
 
 
-# Ask for a username
-# def get_username():
-#     username = input("Escriba el nombre de usuario: ")
-#     return username
+def get_username():
+    str_username = ""
+    for value in USER:
+        # print(value.username)
+        str_username = value.username
+    global USERNAME
+    USERNAME = str_username
+    return str_username
 
 
 def create_user(username: str):
@@ -38,6 +42,17 @@ def create_user(username: str):
     USER.append(user)
     # for value in USER:
     #     print(value.username)
+
+
+def get_global_var(var_name):
+    if var_name == "OWNED_NAMES_LIST":
+        return OWNED_NAMES_LIST
+    elif var_name == "SEARCH_OWNED_GAMES":
+        return SEARCH_OWNED_GAMES
+    elif var_name == "USERNAME":
+        return USERNAME
+    elif var_name == "USER":
+        return USER
 
 
 # Reformat game name using user text
@@ -100,7 +115,7 @@ def write_json_file(json_name, search_data: dict):
         json.dump(search_data, json_file)
 
 
-# Discard not boardgame/boardgame explansions elements
+# Discard not boardgame/boardgame expansions elements
 def finded_games_xml_cleaner(xml_name):
     path = "BGG_project\\xml_files\\" + xml_name
 
@@ -173,8 +188,7 @@ def get_user_games(username):
 def stored_games(xml_name):
 
     path = "BGG_project\\xml_files\\" + xml_name
-
-    with open(path, 'w+', encoding='utf-8') as file:
+    with open(path, 'rt', encoding='utf-8') as file:
         tree = ElementTree.parse(file)
     # print(tree)
 
@@ -186,15 +200,19 @@ def stored_games(xml_name):
         stored_boardgame_list.append(node)
 
     for element in stored_boardgame_list:
+        id = element.attrib.get('objectid')
         name = element.find('name').text
-        owned_names_list.append(name)
+        game_list = [id, name]
+        owned_names_list.append(game_list)
 
     global OWNED_NAMES_LIST
     for element in owned_names_list:
         OWNED_NAMES_LIST.append(element)
-        print(element)
+        #print(element)
 
-    print(OWNED_NAMES_LIST)
+    print("estas en stored")
+    #print("OWNED_NAMES_LIST")
+    #print(OWNED_NAMES_LIST)
     #return owned_names_list
 
 

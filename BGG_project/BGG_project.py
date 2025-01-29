@@ -13,5 +13,5 @@ app = rx.App(
 )
 
 app.add_page(index)
-app.add_page(stored_games)
 app.add_page(finded_games)
+app.add_page(stored_games)

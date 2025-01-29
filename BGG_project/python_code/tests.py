@@ -1,14 +1,6 @@
-from user import User
 
-#Vars
-USER = []
+mi_lista = [['124847', '1911 Amundsen vs Scott'], ['207830', '5-Minute Dungeon']]
 
 
-def create_user(username: str):
-    user = User(username)
-    global USER
-    USER.append(user)
-    print(USER)
-
-
-create_user("byDracool")
+for value in mi_lista:
+ print(value[1])
