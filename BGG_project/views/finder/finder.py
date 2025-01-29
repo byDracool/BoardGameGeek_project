@@ -48,8 +48,6 @@ class FormInputState(rx.State):
             #print(value.username)
         get_user_games(self.input_username)
         stored_games("stored_games.xml")
-        #print("SEGUNDO OWNED_NAMES_LIST")
-        #print(OWNED_NAMES_LIST)
 
         #prueba_lista = OWNED_NAMES_LIST[0].items()
         # for game in OWNED_NAMES_LIST.items:
@@ -141,9 +139,9 @@ def username_input():
             #rx.divider(),
             #rx.hstack(
             #    rx.heading("Results:"),
-                rx.text(
-                    FormInputState.input_username
-                ),
+            #     rx.text(
+            #         FormInputState.input_username
+            #     ),
             #    rx.text(
             #        FormInputState.owned_names_list
             #    ),
