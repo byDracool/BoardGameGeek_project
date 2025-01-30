@@ -2,7 +2,8 @@ import requests
 from xml.etree import ElementTree
 import json
 #from user import User
-#from BGG_project.python_code.game_data_extractor import game_data_extractor as extractor
+from BGG_project.python_code.game_data_extractor import game_data_extractor
+
 
 #Vars
 USER = []
@@ -171,11 +172,32 @@ def select_game(find_result_dict):
     return game_id
 
     
-# Obtains game info
+# Obtains game info (xml file)
 def get_game_info_xml(game_id):
     game_page = query_text("open_url_with_id", game_id)
     search_data = requests.get(game_page)
     write_xml_file("game_info.xml", search_data)
+
+
+# Creates an object game with all extracted parameters
+def send_game_url_to_extract_info(url_xml):
+    #Example url:
+    #url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+    game = game_data_extractor(url_xml)
+    # print(game)
+    # print(game.image_small)
+    # print(game.image)
+    # print(game.description)
+    # print(game.year_published)
+    # print(game.min_players)
+    # print(game.max_players)
+    # print(game.min_playtime)
+    # print(game.max_playtime)
+    # print(game.min_age)
+    # print(game.game_name)
+    # print(game.designers)
+    # print(game.artists)
+    # print(game.publishers)
 
 
 # Obtains user games(Its necessary execute it 2 times for working)
@@ -260,3 +282,4 @@ def find_games_process(game_name):
     print(game.designers)
     print(game.artists)
     print(game.publishers)"""
+

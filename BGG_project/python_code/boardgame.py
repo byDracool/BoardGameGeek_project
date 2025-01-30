@@ -1,4 +1,18 @@
 class Boardgame:
+    game_name: str
+    image: str
+    image_small: str
+    description: str
+    year_published: str
+    min_players: str
+    max_players: str
+    min_playtime: str
+    max_playtime: str
+    min_age: str
+    designers: list
+    artists: list
+    publishers: list
+
     def __init__(self, game_name, image, image_small, description, year_published, min_players, max_players, min_playtime, max_playtime, min_age, designers, artists, publishers):
         self.game_name = game_name
         self.image = image
