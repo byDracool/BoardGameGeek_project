@@ -45,12 +45,12 @@ class FormInputState(rx.State):
         self.total = len(OWNED_NAMES_LIST)
 
 
-def iter_generated_name_list(owned_names_list):
-    return rx.list(owned_names_list)
+# def iter_generated_name_list(owned_names_list):
+#     return rx.list(owned_names_list)
 
 
-def iter_generated_id_list(owned_id_list):
-    return rx.list(owned_id_list)
+# def iter_generated_id_list(owned_id_list):
+#     return rx.list(owned_id_list)
 
 
 def render_link(link_data: rx.Var):
