@@ -1,21 +1,23 @@
-from xml.etree import ElementTree
+from urllib.request import urlopen
+from xml.etree.ElementTree import parse
 import re
 from BGG_project.python_code import boardgame
 
 
-def game_data_extractor():
+def game_data_extractor(url_xml):
 
     designers  = []
     artists  = []
     publishers  = []
 
     #Find elements and extract values
-    def xml_finder(element):
-        return value.find(element).attrib.get('value')
+    def xml_finder(game_element):
+        return value.find(game_element).attrib.get('value')
 
-    with open("game_info.xml", 'rt', encoding='utf-8') as game_file:
-        tree = ElementTree.parse(game_file)
-        #print(tree)
+    # url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+    search_data = urlopen(url_xml)
+    tree = parse(search_data)
+    # print(tree)
     
     for value in tree.iter('item'):
         #Image
