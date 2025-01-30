@@ -44,15 +44,15 @@ def create_user(username: str):
     #     print(value.username)
 
 
-def get_global_var(var_name):
-    if var_name == "OWNED_NAMES_LIST":
-        return OWNED_NAMES_LIST
-    elif var_name == "SEARCH_OWNED_GAMES":
-        return SEARCH_OWNED_GAMES
-    elif var_name == "USERNAME":
-        return USERNAME
-    elif var_name == "USER":
-        return USER
+# def get_global_var(var_name):
+#     if var_name == "OWNED_NAMES_LIST":
+#         return OWNED_NAMES_LIST
+#     elif var_name == "SEARCH_OWNED_GAMES":
+#         return SEARCH_OWNED_GAMES
+#     elif var_name == "USERNAME":
+#         return USERNAME
+#     elif var_name == "USER":
+#         return USER
 
 
 # Reformat game name using user text
@@ -84,7 +84,7 @@ def find_games(user_text):
     game_name = query_text("find_games_with_name", game)
     # print(game_name)
     search_data = requests.get(game_name)
-    # print(search_data.text)
+    #print(search_data.text)
     return search_data
 
 
@@ -163,6 +163,7 @@ def print_games(find_result_dict):
     
 
 def select_game(find_result_dict):
+    game_id = ""
     game_order = int(input("Seleccione el juego que desea: "))
     for index, game in enumerate (find_result_dict):
         if index == (game_order - 1):
@@ -211,28 +212,30 @@ def stored_games(xml_name):
         #print(element)
 
     #print("OWNED_NAMES_LIST")
-    #print(OWNED_NAMES_LIST)
+    # print(OWNED_NAMES_LIST)
     #return owned_names_list
 
 
 def find_games_process(game_name):
 
     #Reformat game name and write the results into a xml file
-    search_data = find_games(game_name)
+    search_data = find_games(game_name) # HASTA AQUI OK
     write_xml_file("finded_games.xml", search_data)
+    #print (search_data.text)
 
     #Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
     find_result_dict = finded_games_xml_cleaner("finded_games.xml")
-    
+    #find_result_dict= finded_games_xml_cleaner(search_data.text)
+
     #Transforms dicto into a json file
     write_json_file("find_results.json", find_result_dict)
     
 
-
-    """#Print and enumerate finded games
+    """
+    #Print and enumerate finded games
     print("\n Estos son los juegos que hemos encontrado con ese nombre...\n")
     print_games(find_result_dict)
-
+    
     #Ask user for a game of the list
     game_id = select_game(find_result_dict)
     #print(game_id)

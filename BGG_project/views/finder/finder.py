@@ -5,13 +5,12 @@ from BGG_project.components.find_icons import find_icon, find_user
 # from BGG_project.styles.colors import TextColor as TextColor
 # from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
-from BGG_project.python_code.constants import OWNED_GAMES_PAGE
 from BGG_project.python_code.functions import *
 
 class FormInputState(rx.State):
     input_username: str
     owned_names_list : list
-    game_name: str #dict = {}
+    game_name: str
 
 
     @rx.event
@@ -19,28 +18,11 @@ class FormInputState(rx.State):
         self.input_username = username["input"]
         #print(self.input_username)
         create_user(self.input_username)
-        # user = User(username["input"])
-        #
-        # global USERNAME
-        # USERNAME.append("byDracool")
-        # #print(USERNAME.items)
-        # #print(USERNAME["input"])
-        # for user in USERNAME:
-        #      print(user.username)
-        # print(USERNAME[0].username)
 
 
     @rx.event
     def handle_game_name(self, game_name: dict):
         self.game_name = game_name["input"]
-
-
-    # @rx.event
-    # def change_page_owned_games(self):
-    #     return rx.redirect(
-    #         OWNED_GAMES_PAGE,
-    #         is_external=True,
-    #     )
 
 
     def get_stored_games(self):
@@ -83,7 +65,7 @@ def game_input():
                 ),
                 #on_submit=Username(),
                 on_submit=FormInputState.handle_game_name,
-                #on_click=FormInputState.find_games(),
+                on_click=FormInputState.find_games(),
                 reset_on_submit=True,
                 align="center",
                 justify="center",
@@ -127,10 +109,6 @@ def username_input():
                 #on_submit=Username(),
                 on_submit=FormInputState.handle_username(),
                 on_click=FormInputState.get_stored_games(),
-                #on_click=rx.redirect(
-                #            "http://localhost:3000/owned_games/",
-                #            is_external=True,
-                #        ),
                 reset_on_submit=True,
                 align="center",
                 justify="center",
