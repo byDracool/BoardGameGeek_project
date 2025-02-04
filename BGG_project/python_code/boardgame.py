@@ -13,7 +13,8 @@ class Boardgame:
     artists: list
     publishers: list
 
-    def __init__(self, game_name, image, image_small, description, year_published, min_players, max_players, min_playtime, max_playtime, min_age, designers, artists, publishers):
+    def __init__(self, game_id, game_name, image, image_small, description, year_published, min_players, max_players, min_playtime, max_playtime, min_age, designers, artists, publishers):
+        self.game_id = game_id
         self.game_name = game_name
         self.image = image
         self.image_small = image_small

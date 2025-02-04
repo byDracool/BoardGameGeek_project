@@ -1,11 +1,43 @@
-from BGG_project.python_code.functions import send_game_url_to_extract_info
-# from BGG_project.python_code.game_data_extractor import game_data_extractor
+from BGG_project.python_code.game_data_extractor import game_data_extractor
+import json
+from BGG_project.python_code.functions import *
+import requests
+import xml.etree.ElementTree as ET
+from xml.etree.ElementTree import parse, fromstring
 
-url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
-send_game_url_to_extract_info(url_xml)
+
+
+
 # url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
-# game = game_data_extractor(url_xml)
-# print(game)
+# url_xml = 'https://boardgamegeek.com/xmlapi2/search?query=dominion'
+#
+# search_data = requests.get(url_xml)
+# # print(search_data)
+# info = search_data.text
+# # print(search_data.text)
+# # print(type(info))
+#
+# # games_search_data = urlopen(stored_games)
+# # root = ET.fromstring(info)
+# # tree = parse(root)
+# tree = ET.fromstring(info)
+# print(tree)
+
+
+
+
+
+
+# url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+# id = "199792"
+# # send_game_id_to_extract_info(id)
+# # game = game_data_extractor(url_xml)
+#
+# print(GAME)
+# for game in GAME:
+#     print(game.game_name)
+
+# print(game.game_name)
 # print(game.image_small)
 # print(game.image)
 # print(game.description)
@@ -86,3 +118,20 @@ send_game_url_to_extract_info(url_xml)
 # print(designers)
 # print(artists)
 # print(publishers)
+
+
+# Find elements and extract values
+def xml_finder(game_element):
+    return value.find(game_element).attrib.get('value')
+
+
+url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+search_data = urlopen(url_xml)
+tree = parse(search_data)
+
+
+for value in tree.iter('item'):
+    # Id
+    print(value)
+    game_id = value.attrib.get('id')
+    print(game_id)

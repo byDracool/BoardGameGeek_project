@@ -1,15 +1,18 @@
 import requests
-from xml.etree import ElementTree
+import reflex as rx
+from urllib.request import urlopen
+from xml.etree.ElementTree import parse
+import xml.etree.ElementTree as ET
 import json
 #from user import User
 from BGG_project.python_code.game_data_extractor import game_data_extractor
-
 
 #Vars
 USER = []
 USERNAME = ""
 SEARCH_OWNED_GAMES = []
 OWNED_NAMES_LIST = []
+FIND_RESULTS_DICT = {}
 
 
 class User:
@@ -20,11 +23,6 @@ class User:
 
     def add_game_to_boardgame_library(self, game: object):
         self.boardgame_library.append(game)
-
-# Ask user for a game
-# def get_user_game():
-#     user_game = input("Qué juego desea buscar?: ")
-#     return user_game
 
 
 def get_username():
@@ -45,17 +43,6 @@ def create_user(username: str):
     #     print(value.username)
 
 
-# def get_global_var(var_name):
-#     if var_name == "OWNED_NAMES_LIST":
-#         return OWNED_NAMES_LIST
-#     elif var_name == "SEARCH_OWNED_GAMES":
-#         return SEARCH_OWNED_GAMES
-#     elif var_name == "USERNAME":
-#         return USERNAME
-#     elif var_name == "USER":
-#         return USER
-
-
 # Reformat game name using user text
 def game_name_reformat(user_text):
     user_text = str(user_text)
@@ -69,11 +56,13 @@ def query_text(type_of_query, data):
     query = ""
     data = str(data)
     if type_of_query == "find_games_with_name":
-        query = ("https://www.boardgamegeek.com/xmlapi2/search?query=" + data)
+        # query = ("https://www.boardgamegeek.com/xmlapi2/search?query=" + data)
+        query = ("https://boardgamegeek.com/xmlapi2/search?query=" + data)
     elif type_of_query == "open_url_with_id":
         query = ("https://www.boardgamegeek.com/xmlapi2/thing?id=" + data)
     elif type_of_query == "find_user_games":
-        query = ("https://www.boardgamegeek.com/xmlapi2/collection?username=" + data + "&subtype=boardgame&own=1")
+        # query = ("https://www.boardgamegeek.com/xmlapi2/collection?username=" + data + "&subtype=boardgame&own=1")
+        query = ("https://boardgamegeek.com/xmlapi2/collection?username=" + data + "&subtype=boardgame&own=1.xml")
     else:
         pass
     return query
@@ -117,11 +106,18 @@ def write_json_file(json_name, search_data: dict):
 
 
 # Discard not boardgame/boardgame expansions elements
-def finded_games_xml_cleaner(xml_name):
-    path = "BGG_project\\xml_files\\" + xml_name
+def finded_games_xml_cleaner(search_data_xml):
 
-    with open(path, 'rt', encoding='utf-8') as file:
-        tree = ElementTree.parse(file)
+    ##### Old method #####
+    # path = "BGG_project\\xml_files\\" + xml_name
+    #
+    # with open(path, 'rt', encoding='utf-8') as file:
+    #     tree = ElementTree.parse(file)
+    # # print(tree)
+
+    ##### New method (without saving local data) #####
+
+    tree = ET.fromstring(search_data_xml)
     # print(tree)
 
     id_list = []
@@ -161,15 +157,6 @@ def finded_games_xml_cleaner(xml_name):
 def print_games(find_result_dict):
     for index, game in enumerate (find_result_dict):
         print((index + 1), ":",find_result_dict[game])
-    
-
-def select_game(find_result_dict):
-    game_id = ""
-    game_order = int(input("Seleccione el juego que desea: "))
-    for index, game in enumerate (find_result_dict):
-        if index == (game_order - 1):
-            game_id = game
-    return game_id
 
     
 # Obtains game info (xml file)
@@ -180,45 +167,67 @@ def get_game_info_xml(game_id):
 
 
 # Creates an object game with all extracted parameters
-def send_game_url_to_extract_info(url_xml):
-    #Example url:
-    #url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+def send_game_id_to_extract_info(game_id):
+    #Example url: 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+    url_xml = "https://boardgamegeek.com/xmlapi2/thing?id=" + game_id + ".xml"
+    # print(url_xml)
     game = game_data_extractor(url_xml)
-    # print(game)
-    # print(game.image_small)
-    # print(game.image)
-    # print(game.description)
-    # print(game.year_published)
-    # print(game.min_players)
-    # print(game.max_players)
-    # print(game.min_playtime)
-    # print(game.max_playtime)
-    # print(game.min_age)
-    # print(game.game_name)
-    # print(game.designers)
-    # print(game.artists)
-    # print(game.publishers)
+    return game
 
 
 # Obtains user games(Its necessary execute it 2 times for working)
-def get_user_games(username):
-    stored_games = query_text("find_user_games", username)
-    search_data = requests.get(stored_games)
-    write_xml_file("stored_games.xml", search_data)
+# def get_user_games(username):
+#     ##### Old method #####
+#     stored_games = query_text("find_user_games", username)
+#     search_data = requests.get(stored_games)
+#     write_xml_file("stored_games.xml", search_data)
 
 
 # Find stored user games
-def stored_games(xml_name):
+# def stored_games(xml_name):
+#     ##### Old method #####
+#     path = "BGG_project\\xml_files\\" + xml_name
+#     with open(path, 'rt', encoding='utf-8') as file:
+#         tree = ElementTree.parse(file)
+#     # print(tree)
+#
+#     stored_boardgame_list = []
+#     owned_names_list = []
+#
+#
+#     for node in tree.iter('item'):
+#         stored_boardgame_list.append(node)
+#
+#     for element in stored_boardgame_list:
+#         id = element.attrib.get('objectid')
+#         name = element.find('name').text
+#         game_list = [id, name]
+#         owned_names_list.append(game_list)
+#
+#     global OWNED_NAMES_LIST
+#     for element in owned_names_list:
+#         OWNED_NAMES_LIST.append(element)
+        #print(element)
 
-    path = "BGG_project\\xml_files\\" + xml_name
-    with open(path, 'rt', encoding='utf-8') as file:
-        tree = ElementTree.parse(file)
+    #print("OWNED_NAMES_LIST")
+    # print(OWNED_NAMES_LIST)
+    #return owned_names_list
+
+
+# Obtains user games(Its necessary execute it 2 times for working)
+def get_user_stored_games(username):
+    # New method (without saving local data)
+
+    # (query example) stored_games = "https://boardgamegeek.com/xmlapi2/collection?username=byDracool&subtype=boardgame&own=1.xml"
+    stored_games = query_text("find_user_games", username)
+    stored_games_search_data = urlopen(stored_games)
+    # print(stored_games_search_data.code)
+    tree = parse(stored_games_search_data)
     # print(tree)
 
     stored_boardgame_list = []
     owned_names_list = []
 
-    
     for node in tree.iter('item'):
         stored_boardgame_list.append(node)
 
@@ -231,55 +240,41 @@ def stored_games(xml_name):
     global OWNED_NAMES_LIST
     for element in owned_names_list:
         OWNED_NAMES_LIST.append(element)
-        #print(element)
+            # print(element)
 
-    #print("OWNED_NAMES_LIST")
-    # print(OWNED_NAMES_LIST)
-    #return owned_names_list
+        # print("OWNED_NAMES_LIST")
+        # print(OWNED_NAMES_LIST)
+        # return owned_names_list
 
 
 def find_games_process(game_name):
+    ##### Old method #####
 
-    #Reformat game name and write the results into a xml file
-    search_data = find_games(game_name) # HASTA AQUI OK
-    write_xml_file("finded_games.xml", search_data)
-    #print (search_data.text)
+    # #Reformat game name and write the results into a xml file
+    # search_data = find_games(game_name)
+    # write_xml_file("finded_games.xml", search_data)
+    # #print (search_data.text)
+    #
+    # #Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
+    # find_result_dict = finded_games_xml_cleaner("finded_games.xml")
+    # #find_result_dict= finded_games_xml_cleaner(search_data.text)
+    #
+    # #Transforms dicto into a json file
+    # write_json_file("find_results.json", find_result_dict)
 
-    #Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
-    find_result_dict = finded_games_xml_cleaner("finded_games.xml")
-    #find_result_dict= finded_games_xml_cleaner(search_data.text)
 
-    #Transforms dicto into a json file
-    write_json_file("find_results.json", find_result_dict)
-    
+    ##### New method (without saving local data) #####
 
-    """
-    #Print and enumerate finded games
-    print("\n Estos son los juegos que hemos encontrado con ese nombre...\n")
-    print_games(find_result_dict)
-    
-    #Ask user for a game of the list
-    game_id = select_game(find_result_dict)
-    #print(game_id)
+    # Reformat game name and write the results into a xml file
+    search_data = find_games(game_name)
+    search_data_xml = search_data.text
 
-    #Gets all game-info of BGG selected boardgame page
-    get_game_info_xml(game_id)
+    # Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
+    # find_result_dict = finded_games_xml_cleaner("finded_games.xml")
+    find_result_dict = finded_games_xml_cleaner(search_data_xml)
+    global FIND_RESULTS_DICT
+    FIND_RESULTS_DICT.update(find_result_dict)
+    # print(type(FIND_RESULTS_DICT))
+    # print(FIND_RESULTS_DICT)
 
-    #Extracts an object with data from game_info_xml
-    game = extractor.game_data_extractor()"""
-    
-    """
-    print(game.image_small)
-    print(game.image)
-    print(game.description)
-    print(game.year_published)
-    print(game.min_players)
-    print(game.max_players)
-    print(game.min_playtime)
-    print(game.max_playtime)
-    print(game.min_age)
-    print(game.game_name)
-    print(game.designers)
-    print(game.artists)
-    print(game.publishers)"""
 

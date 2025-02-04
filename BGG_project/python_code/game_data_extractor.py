@@ -20,6 +20,8 @@ def game_data_extractor(url_xml):
     # print(tree)
     
     for value in tree.iter('item'):
+        #Id
+        game_id = value.attrib.get("id")
         #Image
         image_small = value.find("thumbnail").text
         image = value.find("image").text
@@ -52,6 +54,7 @@ def game_data_extractor(url_xml):
                 boardgame_publisher = element.attrib.get('value')
                 publishers.append(boardgame_publisher)
 
+    # print(game_id)
     #print(image_small)
     #print(image)
     #print(description)
@@ -67,7 +70,7 @@ def game_data_extractor(url_xml):
     #print(publishers)
 
     # Create an object (game) with all extracted parameters
-    game = boardgame.Boardgame(game_name, image, image_small, description, year_published, min_players, max_players, min_playtime, max_playtime, min_age, designers, artists, publishers)
+    game = boardgame.Boardgame(game_id, game_name, image, image_small, description, year_published, min_players, max_players, min_playtime, max_playtime, min_age, designers, artists, publishers)
     
     return game
 

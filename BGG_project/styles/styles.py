@@ -2,7 +2,7 @@ import reflex as rx
 from enum import Enum
 from .colors import Color as Color
 from .colors import TextColor as TextColor
-from .fonts import Font
+from .fonts import Font, FontWeight
 
 
 STYLESHEETS = [
@@ -35,22 +35,36 @@ BASE_STYLE = {
 
 
 navbar_style = dict(
-        font_family=Font.DEFAULT.value,
-        font_size=Size.MEDIUM_PLUS.value
+    font_family=Font.DEFAULT.value,
+    font_size=Size.MEDIUM_PLUS.value
 )
 
 header_style = dict(
-        font_family=Font.TITLE.value,
-        color=TextColor.HEADER.value
+    font_family=Font.TITLE.value,
+    color=TextColor.HEADER.value
 )
 
 finder_style = dict(
-        font_family=Font.DEFAULT.value,
-        color=TextColor.BODY.value,
-        font_size=Size.MEDIUM_PLUS.value
+    font_family=Font.DEFAULT.value,
+    color=TextColor.BODY.value,
+    font_size=Size.MEDIUM_PLUS.value
 )
 
 footer_style = dict(
-        font_family=Font.FOOTER.value,
-        color=TextColor.FOOTER.value
+    font_family=Font.FOOTER.value,
+    color=TextColor.FOOTER.value
+)
+
+game_description_style = dict(
+    font_family=Font.DESCRIPTION.value,
+    font_weight=FontWeight.EXTRA_LIGHT.value,
+    font_style="italic",
+    color=TextColor.BODY.value,
+    font_size=Size.MEDIUM.value,
+)
+
+game_title_style = dict(
+    font_family=Font.TITLE.value,
+    color=TextColor.HEADER.value,
+    font_style="italic",
 )
