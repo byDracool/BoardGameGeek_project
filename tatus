@@ -1,0 +1,381 @@
+[33mcommit 99b952a9f299c32872df32de450fd3426253f2fa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Feb 4 14:54:22 2025 +0100
+
+    Stable version 1.1
+
+[33mcommit 303e84bb3c50dc5f5a0cd543ebd01e54db8a8296[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Feb 4 12:46:59 2025 +0100
+
+    Stable version 1.0
+
+[33mcommit 6d7df786377b1c64c3f769ceb380267328b50f44[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 30 17:50:05 2025 +0100
+
+    Redo extractor OK
+
+[33mcommit 2f3ec86e65c5c72b1f98fed8a4a1d7d4f975c4b8[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 30 13:30:22 2025 +0100
+
+    Finded games implemented
+
+[33mcommit d84bd273a38b682503a5a71e6275dcfd561191db[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 29 17:30:25 2025 +0100
+
+    Owned games OK
+
+[33mcommit a04945bd2159f80e1cb41dcdcf772dd4dedfbf52[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 29 13:43:45 2025 +0100
+
+    Fixing owned user games page
+
+[33mcommit d340c455afb4c060ffbcc75c07defcddd382642c[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Jan 28 17:10:49 2025 +0100
+
+    Restructuring finder.py
+
+[33mcommit 6eefcee886ad56271078a319558b0308c81ff866[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 27 13:28:53 2025 +0100
+
+    Deleting vars
+
+[33mcommit 0793da8dcb45b77bac8ca49324765eac4a39511f[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 27 10:14:13 2025 +0100
+
+    Adding vars.py
+
+[33mcommit 51342fd1d7d4f6c3b32c45de331508891576a94f[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 24 14:21:38 2025 +0100
+
+    Inputs v2
+
+[33mcommit d99ccdea608918d328396666c1e81f569ef66d5d[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 23 09:38:06 2025 +0100
+
+    Input v1.1
+
+[33mcommit 4cce3fc52b32863fd2966e3851b8f33a4460d21c[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 23 09:35:48 2025 +0100
+
+    Inputs v1
+
+[33mcommit b9ac3d067ca4672d702821c6a7b2de8946d45766[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 22 14:44:14 2025 +0100
+
+    Owned games search added
+
+[33mcommit 6d52a4758bb761d73ee2173606ba746e11de52bd[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 22 13:12:36 2025 +0100
+
+    undo login process
+
+[33mcommit eb7dfad7c254ce07846b3f20787ec357bf1415c1[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 22 11:04:22 2025 +0100
+
+    NewFoldersAdded_my_code_and_xml_files
+
+[33mcommit ed4bfe3fa91f2391dbf2fe0c808b7e4c3d98ad3c[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 22 10:48:00 2025 +0100
+
+    Login v6
+
+[33mcommit 671ede5357c399fb1508a9cbeb6007213fc379e8[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Jan 21 18:52:43 2025 +0100
+
+    Login v5
+
+[33mcommit eb967f1b08e8b807c7c149b96d3f77dfecd31d3e[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Jan 21 14:50:56 2025 +0100
+
+    Login v5
+
+[33mcommit 24892268b6fe828432b5e371b6687fd676548488[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Jan 21 13:48:58 2025 +0100
+
+    temp 2
+
+[33mcommit 2e532dc11bb2c55c12b79d14d8d2da023e5dc033[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Tue Jan 21 12:32:49 2025 +0100
+
+    temp
+
+[33mcommit 783bf121647e75fb136ede012f6307bd94bbdaf1[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 16:50:23 2025 +0100
+
+    Login v4
+
+[33mcommit 9de82cbb181055a558b072eef6b19591b808f11a[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 16:43:41 2025 +0100
+
+    Login v3
+
+[33mcommit d22346b56b6097ed7c4ccf956f05bb1b0a14e15f[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 16:37:17 2025 +0100
+
+    Login v2
+
+[33mcommit b31fb8099916080d6ed0b58fe23bd587bc6903b0[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 14:46:01 2025 +0100
+
+    Login v1
+
+[33mcommit fe0729f091aa3d92ffd5cb89091aa7dc5582f808[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 11:53:06 2025 +0100
+
+    Github link to Repo added
+
+[33mcommit 4b6e374fab617bece52c2b3006a7bc64a271231e[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 10:54:11 2025 +0100
+
+    Creates build.sh
+
+[33mcommit 1a1b6389a4484906380d1a52feda56951f46d266[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 20 10:27:38 2025 +0100
+
+    Obtains responsive and accesibility
+
+[33mcommit 8c2b1fd3fe50bae692025331f193a7eca447efc8[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 19:53:49 2025 +0100
+
+    Stylesheets
+
+[33mcommit 50bffcb0e77ada6eb107434481bc28b054cdcd5a[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 18:13:12 2025 +0100
+
+    Fonts 3
+
+[33mcommit 06771049d10b08fd4385d4a8399f4d9bc3ac2792[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 17:54:21 2025 +0100
+
+    Fonts 2
+
+[33mcommit af281e76b6312c465380a76838750df5f75e90e7[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 17:03:49 2025 +0100
+
+    Fonts
+
+[33mcommit 454235f40aa04e73bfb1b416cd84af127e3d259b[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 14:13:25 2025 +0100
+
+    Colors 3
+
+[33mcommit 7ab4eb8f3d817eb91b59469f8995948ea8e69ea4[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 13:45:22 2025 +0100
+
+    Reflex logo
+
+[33mcommit be762129f5dd44284dc999819491ec09ceb63a86[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 13:24:30 2025 +0100
+
+    Colors 2
+
+[33mcommit dd36f30ec31292edaeb820d545be4c30b6692b0a[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 13:01:07 2025 +0100
+
+    Colors
+
+[33mcommit e5d006a7a3ed2ff0d32125ad85a5558afe56ed1d[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 12:31:08 2025 +0100
+
+    Styling v7
+
+[33mcommit 409b4c562442d95ddff84de2d8754d1133daecbe[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 11:55:43 2025 +0100
+
+    Upgrades Next.js to v15
+
+[33mcommit 84574ec700aff3d146ceb324ca9c31e1c4095c15[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Fri Jan 17 10:53:51 2025 +0100
+
+    Styling v6
+
+[33mcommit a37bb70ad4e54efb6e9f274b5ccf47101a78dd08[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 20:27:43 2025 +0100
+
+    Styling v5
+
+[33mcommit 16f3d0e41f49b006fae1a3f57a842e391eb65cac[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 20:17:53 2025 +0100
+
+    "Styling v4
+
+[33mcommit d828110e11a004a1d1927f95ec6dcbaf1ed67783[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 20:10:19 2025 +0100
+
+    Styling v3
+
+[33mcommit 1d2dfb5b5ac1bf851c00374b0def0089cd63256f[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 19:28:57 2025 +0100
+
+    Restoring
+
+[33mcommit 2990952d97124d8f1adad0f04189a43685ad6532[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 14:19:53 2025 +0100
+
+    Styling index v2
+
+[33mcommit 0895475918dd6d73c910f866fba53beab82b47e0[m[33m ([m[1;31morigin/master[m[33m)[m
+Merge: cf3768f 7428555
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 13:33:38 2025 +0100
+
+    Merge branch 'master' of https://github.com/byDracool/BoardGameGeek_project
+
+[33mcommit cf3768fef9077a6e368b561127ab342f218d0453[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 13:33:32 2025 +0100
+
+    styling index v1
+
+[33mcommit 7428555c907b5d470682248236ec02b7c134c1a5[m
+Merge: 3ce805e 05dab2e
+Author: CarlosTerrez <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 12:40:45 2025 +0100
+
+    Merge pull request #5 from byDracool/main
+    
+    Main
+
+[33mcommit 05dab2e3c9aeecda1e904aaa466c87b2211fab62[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 12:39:59 2025 +0100
+
+    Adds components and views
+
+[33mcommit d0c31d45431db5f38953847753daefb95fff7d23[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 11:00:28 2025 +0100
+
+    v1.2
+
+[33mcommit f0d2f55dc7d0d4de667ccba4c375b24e705521ab[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 10:50:06 2025 +0100
+
+    v1.1
+
+[33mcommit 3ce805ec7297f57e22afaf1084d1e9956f9b8794[m
+Merge: ca8fa08 b901ac4
+Author: CarlosTerrez <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 10:21:46 2025 +0100
+
+    Merge pull request #4 from byDracool/main
+    
+    Main
+
+[33mcommit b901ac43246f49d5cd32f56d14d9e00b6d9a3d2c[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Thu Jan 16 10:05:13 2025 +0100
+
+    New logo added to index
+
+[33mcommit 7cae013ae4537282159f3ff38b1349392d1b1eae[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 21:28:26 2025 +0100
+
+    Banner
+
+[33mcommit ca8fa082af57abc0ec672ec1fa3214d10ffdb74f[m
+Merge: cfd3f2b 8a0e642
+Author: CarlosTerrez <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 20:58:55 2025 +0100
+
+    Merge pull request #3 from byDracool/main
+    
+    Adding BGG banner
+
+[33mcommit 8a0e6429f42e306869e470b75cf29f5c718fc99b[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 20:18:04 2025 +0100
+
+    Adding BGG banner
+
+[33mcommit cfd3f2b625dc3c7cdb8bbfa3eec93b9761beef04[m
+Merge: c61b8f6 be87e24
+Author: CarlosTerrez <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 14:45:14 2025 +0100
+
+    Merge pull request #2 from byDracool/reflex
+    
+    Index page formating v1.0
+
+[33mcommit be87e249a10e93b5c8ae204054ebef049278466d[m[33m ([m[1;31morigin/reflex[m[33m)[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 14:43:28 2025 +0100
+
+    Index page formating v1.0
+
+[33mcommit c61b8f620c65fe5e3bc92e4199763294e21987ab[m
+Merge: aa75f8d 199abb5
+Author: CarlosTerrez <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 11:22:43 2025 +0100
+
+    Merge pull request #1 from byDracool/main
+    
+    Main
+
+[33mcommit 199abb5eb292b7b3ae3d3471eb603af6ae1b4c09[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 11:13:30 2025 +0100
+
+    venv created and Reflex installed
+
+[33mcommit d14efafb5ba7b9bc0f171abce9155d9e0866a44e[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Wed Jan 15 10:46:27 2025 +0100
+
+    Add notas
+
+[33mcommit aa75f8d9db595df9b7c19148038aa3a878703f5d[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 13 11:58:12 2025 +0100
+
+    .gitignore added
+
+[33mcommit 7dcddc7443d59c5f73cf0f35844bf5db7d08f779[m
+Author: Carlos <carlosterrezsegura@gmail.com>
+Date:   Mon Jan 13 10:51:57 2025 +0100
+
+    v1.0

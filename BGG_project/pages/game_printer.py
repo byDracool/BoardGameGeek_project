@@ -24,7 +24,6 @@ class FormInputState(rx.State):
 
     def retrieve_game_info(self):
         for game in GAME:
-            print(game.game_name)
             self.game_name = game.game_name
             self.image = game.image
             self.image_small = game.image_small

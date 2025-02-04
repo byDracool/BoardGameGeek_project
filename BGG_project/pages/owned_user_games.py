@@ -23,8 +23,8 @@ class FormInputState(rx.State):
         username = get_username()
         self.username = username
         imported_owned_names_list = get_owned_names_list()
-        print("valores")
-        print(imported_owned_names_list)
+        # print("valores")
+        # print(imported_owned_names_list)
 
         # for game in OWNED_NAMES_LIST:
         #     self.owned_names_list.append(game[1])

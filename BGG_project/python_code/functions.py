@@ -255,8 +255,8 @@ def get_user_stored_games(username):
         OWNED_NAMES_LIST.append(element)
             # print(element)
 
-    print("OWNED_NAMES_LIST")
-    print(OWNED_NAMES_LIST)
+    # print("OWNED_NAMES_LIST")
+    # print(OWNED_NAMES_LIST)
 
 
 def find_games_process(game_name):
