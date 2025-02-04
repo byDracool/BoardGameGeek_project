@@ -7,6 +7,7 @@ from BGG_project.components.find_icons import find_icon, find_user
 import BGG_project.styles.styles as styles
 from BGG_project.python_code.functions import *
 
+
 class FormInputState(rx.State):
     input_username: str
     owned_names_list : list
@@ -34,9 +35,8 @@ class FormInputState(rx.State):
         # stored_games("stored_games.xml")
 
         ##### New method (without saving local data) #####
-        # 2 times executed due BGG API bug
-        get_user_stored_games(self.input_username)
 
+        get_user_stored_games(self.input_username)
 
         #prueba_lista = OWNED_NAMES_LIST[0].items()
         # for game in OWNED_NAMES_LIST.items:
