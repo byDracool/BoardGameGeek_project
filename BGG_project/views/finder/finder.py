@@ -28,8 +28,15 @@ class FormInputState(rx.State):
     def get_stored_games(self):
         #for value in USER:
             #print(value.username)
-        get_user_games(self.input_username)
-        stored_games("stored_games.xml")
+
+        ##### Old method #####
+        # get_user_games(self.input_username)
+        # stored_games("stored_games.xml")
+
+        ##### New method (without saving local data) #####
+        # 2 times executed due BGG API bug
+        get_user_stored_games(self.input_username)
+
 
         #prueba_lista = OWNED_NAMES_LIST[0].items()
         # for game in OWNED_NAMES_LIST.items:
@@ -71,16 +78,16 @@ def game_input():
                 justify="center",
                 width="100%",
             ),
-            rx.divider(),
-            rx.hstack(
-                rx.heading("Results:"),
-                rx.text(
-                    FormInputState.game_name
-                ),
+            # rx.divider(),
+            # rx.hstack(
+            #     rx.heading("Results:"),
+            #     rx.text(
+            #         FormInputState.game_name
+            #     ),
             #    rx.text(
             #        FormInputState.owned_names_list
             #    ),
-            ),
+            # ),
             align="center",
             justify="center",
             width="100%",
