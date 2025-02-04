@@ -214,14 +214,25 @@ def send_game_id_to_extract_info(game_id):
     #return owned_names_list
 
 
+def empty_owned_names_list():
+    global OWNED_NAMES_LIST
+    OWNED_NAMES_LIST = []
+
+
+def get_owned_names_list() :
+    global OWNED_NAMES_LIST
+    return OWNED_NAMES_LIST
+
 # Obtains user games(Its necessary execute it 2 times for working)
 def get_user_stored_games(username):
-    # New method (without saving local data)
 
+    # New method (without saving local data)
+    empty_owned_names_list()
     # (query example) stored_games = "https://boardgamegeek.com/xmlapi2/collection?username=byDracool&subtype=boardgame&own=1.xml"
     stored_games = query_text("find_user_games", username)
     stored_games_search_data = urlopen(stored_games)
-    # print(stored_games_search_data.code)
+    # print("url")
+    # print(stored_games_search_data.readlines())
     tree = parse(stored_games_search_data)
     # print(tree)
 
@@ -237,14 +248,15 @@ def get_user_stored_games(username):
         game_list = [id, name]
         owned_names_list.append(game_list)
 
+    # print(owned_names_list)
+
     global OWNED_NAMES_LIST
     for element in owned_names_list:
         OWNED_NAMES_LIST.append(element)
             # print(element)
 
-        # print("OWNED_NAMES_LIST")
-        # print(OWNED_NAMES_LIST)
-        # return owned_names_list
+    print("OWNED_NAMES_LIST")
+    print(OWNED_NAMES_LIST)
 
 
 def find_games_process(game_name):

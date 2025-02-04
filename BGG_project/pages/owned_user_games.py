@@ -5,6 +5,7 @@ from BGG_project.python_code.constants import GAME_PRINTER
 from BGG_project.components.navbar import navbar
 from BGG_project.components.footer import footer
 from BGG_project.python_code.functions import *
+from BGG_project.python_code.functions import OWNED_NAMES_LIST
 
 
 GAME = []
@@ -21,8 +22,9 @@ class FormInputState(rx.State):
     def generate_data(self):
         username = get_username()
         self.username = username
-        #print("OTRO OWNED_NAMES_LIST")
-        #print(OWNED_NAMES_LIST)
+        imported_owned_names_list = get_owned_names_list()
+        print("valores")
+        print(imported_owned_names_list)
 
         # for game in OWNED_NAMES_LIST:
         #     self.owned_names_list.append(game[1])
@@ -36,8 +38,10 @@ class FormInputState(rx.State):
         # print("self owned_id_list")
         # print(self.owned_id_list)
 
-        self.owned_full_list = OWNED_NAMES_LIST
-        self.total = len(OWNED_NAMES_LIST)
+        self.owned_full_list = imported_owned_names_list
+        self.total = len(imported_owned_names_list)
+
+        imported_owned_names_list = []
 
 
 class State(rx.State):
@@ -88,47 +92,67 @@ def stored_games() -> rx.Component:
         navbar(),
         rx.center(
             rx.vstack(
-                    rx.heading(
-                        #"AAA",
-                        f"User  '{FormInputState.username}' ",
-                        # "User  " + "'" + get_username() + "'"),
-                        # "User  " + "'" + USER[user.username] + "'",
-                        align="center",
-                        justify="center",
-                        size="7",
+                rx.heading(
+                    #"AAA",
+                    f"User  '{FormInputState.username}' ",
+                    # "User  " + "'" + get_username() + "'"),
+                    # "User  " + "'" + USER[user.username] + "'",
+                    align="center",
+                    justify="center",
+                    size="7",
+                    spacing=Size.DEFAULT.value,
+                    style=styles.header_style
+                ),
+                rx.text(
+                    "Games stored in BGG:",
+
+                    size="5",
+                    padding_top=Size.EXTRA_SMALL.value,
+                    spacing=Size.DEFAULT.value,
+                    style=styles.header_style
+                ),
+                rx.spacer(),
+                # rx.text(
+                #     f"(Total encountered: {FormInputState.total})",
+                #     size="4",
+                #     padding_top=Size.EXTRA_SMALL.value,
+                #     spacing=Size.DEFAULT.value,
+                #     style=styles.header_style,
+                #     align="center",
+                #     justify="center",
+                # ),
+                rx.cond(
+                    (FormInputState.total != 0),
+                    rx.text(
+                        f"(Total encountered: {FormInputState.total})",
+                        size="4",
+                        padding_top=Size.EXTRA_SMALL.value,
                         spacing=Size.DEFAULT.value,
-                        style=styles.header_style
+                        style=styles.header_style,
+                        align = "center",
+                        justify = "center",
                     ),
-                rx.hstack(
-                        rx.text(
-                            "Games stored in BGG:",
-
-                            size="5",
-                            padding_top=Size.EXTRA_SMALL.value,
-                            spacing=Size.DEFAULT.value,
-                            style=styles.header_style
-                        ),
-                        rx.spacer(),
-                        rx.text(
-                            f"(Total encountered: {FormInputState.total})",
-
-                            size="4",
-                            padding_top=Size.EXTRA_SMALL.value,
-                            spacing=Size.DEFAULT.value,
-                            style=styles.header_style
-                        ),
+                    rx.text(
+                        f"(Incorrect username or no games encountered)",
+                        size="4",
+                        color_scheme="red",
+                        padding_top=Size.EXTRA_SMALL.value,
+                        spacing=Size.DEFAULT.value,
+                        align = "center",
+                        justify = "center",
                     ),
-                    rx.spacer(),
-                    # (FormInputState.generate_list()),
-                    # rx.list.ordered(
-                    #     [rx.list.item(game) for game in FormInputState.owned_names_list],
-                    #     padding_top=Size.DEFAULT.value,
-                    # ),
-                    # rx.foreach(FormInputState.owned_names_list, iter_generated_name_list),
-                    # rx.foreach(FormInputState.owned_id_list, iter_generated_id_list),
-                    rx.foreach(FormInputState.owned_full_list, render_link),
-            align="center",
-            justify="center",
+                ),
+                rx.spacer(),
+                # (FormInputState.generate_list()),
+                # rx.list.ordered(
+                #     [rx.list.item(game) for game in FormInputState.owned_names_list],
+                #     padding_top=Size.DEFAULT.value,
+                # ),
+                # rx.foreach(FormInputState.owned_names_list, iter_generated_name_list),
+                # rx.foreach(FormInputState.owned_id_list, iter_generated_id_list),
+                rx.foreach(FormInputState.owned_full_list, render_link),
+                align="center",
+                justify="center",
             ),
         ),
         footer(),
