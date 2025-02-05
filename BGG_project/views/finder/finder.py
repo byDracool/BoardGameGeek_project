@@ -1,9 +1,6 @@
 import reflex as rx
-# from BGG_project.python_code.user import User
 from BGG_project.styles.styles import Size as Size
 from BGG_project.components.find_icons import find_icon, find_user
-# from BGG_project.styles.colors import TextColor as TextColor
-# from BGG_project.styles.fonts import Font as Font
 import BGG_project.styles.styles as styles
 from BGG_project.python_code.functions import *
 
@@ -13,39 +10,18 @@ class FormInputState(rx.State):
     owned_names_list : list
     game_name: str
 
-
     @rx.event
     def handle_username(self, username: dict):
         self.input_username = username["input"]
         #print(self.input_username)
         create_user(self.input_username)
 
-
     @rx.event
     def handle_game_name(self, game_name: dict):
         self.game_name = game_name["input"]
 
-
     def get_stored_games(self):
-        #for value in USER:
-            #print(value.username)
-
-        ##### Old method #####
-        # get_user_games(self.input_username)
-        # stored_games("stored_games.xml")
-
-        ##### New method (without saving local data) #####
-
         get_user_stored_games(self.input_username)
-
-        #prueba_lista = OWNED_NAMES_LIST[0].items()
-        # for game in OWNED_NAMES_LIST.items:
-        #     OWNED_NAMES_LIST.append(game)
-
-        #write_txt_file("owned_names_list.txt", prueba_lista)
-        #
-        #FormInputState.change_page_owned_games()
-
 
     def find_games(self):
         find_games_process(self.game_name)

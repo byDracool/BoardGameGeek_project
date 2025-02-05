@@ -3,7 +3,6 @@ import reflex as rx
 from urllib.request import urlopen
 from xml.etree.ElementTree import parse
 import xml.etree.ElementTree as ET
-import json
 #from user import User
 from BGG_project.python_code.game_data_extractor import game_data_extractor
 
@@ -13,6 +12,7 @@ USERNAME = ""
 SEARCH_OWNED_GAMES = []
 OWNED_NAMES_LIST = []
 FIND_RESULTS_DICT = {}
+GAME = []
 
 
 class User:
@@ -78,44 +78,8 @@ def find_games(user_text):
     return search_data
 
 
-# Creates a txt file with user owned game names
-def write_txt_file(txt_name, data):
-    path = "BGG_project\\txt_files\\" + txt_name
-    file = open(path, "w+")
-    if txt_name != "username.txt":
-        for value in data:
-            file.write(value + ",")
-    else:
-        for value in data:
-            file.write(value)            
-    file.close()  
-
-
-# Open the file and overwrite the data we have extracted
-def write_xml_file(xml_name, search_data):
-    path = "BGG_project\\xml_files\\" + xml_name
-    with open(path, "w+", encoding='utf-8') as game_results:
-        game_results.write(search_data.text)
-        game_results.close()
-
-
-def write_json_file(json_name, search_data: dict):
-    path = "BGG_project\\json_files\\" + json_name
-    with open(path, "w+", encoding='utf-8') as json_file:
-        json.dump(search_data, json_file)
-
-
 # Discard not boardgame/boardgame expansions elements
 def finded_games_xml_cleaner(search_data_xml):
-
-    ##### Old method #####
-    # path = "BGG_project\\xml_files\\" + xml_name
-    #
-    # with open(path, 'rt', encoding='utf-8') as file:
-    #     tree = ElementTree.parse(file)
-    # # print(tree)
-
-    ##### New method (without saving local data) #####
 
     tree = ET.fromstring(search_data_xml)
     # print(tree)
@@ -133,7 +97,7 @@ def finded_games_xml_cleaner(search_data_xml):
             validated_nodes.append(node)
     # print(validated_nodes)
 
-    # Get boargames ids/names
+    # Get boardgames ids/names
     for element in validated_nodes:
         id = element.attrib.get('id')
         id_list.append(str(id))
@@ -158,13 +122,6 @@ def print_games(find_result_dict):
     for index, game in enumerate (find_result_dict):
         print((index + 1), ":",find_result_dict[game])
 
-    
-# Obtains game info (xml file)
-def get_game_info_xml(game_id):
-    game_page = query_text("open_url_with_id", game_id)
-    search_data = requests.get(game_page)
-    write_xml_file("game_info.xml", search_data)
-
 
 # Creates an object game with all extracted parameters
 def send_game_id_to_extract_info(game_id):
@@ -175,59 +132,39 @@ def send_game_id_to_extract_info(game_id):
     return game
 
 
-# Obtains user games(Its necessary execute it 2 times for working)
-# def get_user_games(username):
-#     ##### Old method #####
-#     stored_games = query_text("find_user_games", username)
-#     search_data = requests.get(stored_games)
-#     write_xml_file("stored_games.xml", search_data)
+# Empty the value of a global variable
+def empty_variable(var_name):
+    match var_name:
+        case "OWNED_NAMES_LIST":
+            global OWNED_NAMES_LIST
+            OWNED_NAMES_LIST = []
+        case "FIND_RESULTS_DICT":
+            global FIND_RESULTS_DICT
+            FIND_RESULTS_DICT = {}
+        case "GAME":
+            global GAME
+            GAME = []
 
 
-# Find stored user games
-# def stored_games(xml_name):
-#     ##### Old method #####
-#     path = "BGG_project\\xml_files\\" + xml_name
-#     with open(path, 'rt', encoding='utf-8') as file:
-#         tree = ElementTree.parse(file)
-#     # print(tree)
-#
-#     stored_boardgame_list = []
-#     owned_names_list = []
-#
-#
-#     for node in tree.iter('item'):
-#         stored_boardgame_list.append(node)
-#
-#     for element in stored_boardgame_list:
-#         id = element.attrib.get('objectid')
-#         name = element.find('name').text
-#         game_list = [id, name]
-#         owned_names_list.append(game_list)
-#
-#     global OWNED_NAMES_LIST
-#     for element in owned_names_list:
-#         OWNED_NAMES_LIST.append(element)
-        #print(element)
-
-    #print("OWNED_NAMES_LIST")
-    # print(OWNED_NAMES_LIST)
-    #return owned_names_list
+# Extract the value of a global variable.
+def get_global_var(var_name):
+    match var_name:
+        case "OWNED_NAMES_LIST":
+            global OWNED_NAMES_LIST
+            return OWNED_NAMES_LIST
+        case "FIND_RESULTS_DICT":
+            global FIND_RESULTS_DICT
+            return FIND_RESULTS_DICT
+        case "GAME":
+            global GAME
+            return GAME
 
 
-def empty_owned_names_list():
-    global OWNED_NAMES_LIST
-    OWNED_NAMES_LIST = []
-
-
-def get_owned_names_list() :
-    global OWNED_NAMES_LIST
-    return OWNED_NAMES_LIST
-
-# Obtains user games(Its necessary execute it 2 times for working)
+# Obtains user games
 def get_user_stored_games(username):
 
-    # New method (without saving local data)
-    empty_owned_names_list()
+    # empty_owned_names_list()
+    empty_variable("OWNED_NAMES_LIST")
     # (query example) stored_games = "https://boardgamegeek.com/xmlapi2/collection?username=byDracool&subtype=boardgame&own=1.xml"
     stored_games = query_text("find_user_games", username)
     stored_games_search_data = urlopen(stored_games)
@@ -260,29 +197,15 @@ def get_user_stored_games(username):
 
 
 def find_games_process(game_name):
-    ##### Old method #####
 
-    # #Reformat game name and write the results into a xml file
-    # search_data = find_games(game_name)
-    # write_xml_file("finded_games.xml", search_data)
-    # #print (search_data.text)
-    #
-    # #Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
-    # find_result_dict = finded_games_xml_cleaner("finded_games.xml")
-    # #find_result_dict= finded_games_xml_cleaner(search_data.text)
-    #
-    # #Transforms dicto into a json file
-    # write_json_file("find_results.json", find_result_dict)
-
-
-    ##### New method (without saving local data) #####
+    # empty_find_results_dict()
+    empty_variable("FIND_RESULTS_DICT")
 
     # Reformat game name and write the results into a xml file
     search_data = find_games(game_name)
     search_data_xml = search_data.text
 
     # Obtains a dict with the cleaned result of the search {id:game_name, id2:game_name2 ...}
-    # find_result_dict = finded_games_xml_cleaner("finded_games.xml")
     find_result_dict = finded_games_xml_cleaner(search_data_xml)
     global FIND_RESULTS_DICT
     FIND_RESULTS_DICT.update(find_result_dict)

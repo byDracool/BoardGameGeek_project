@@ -121,17 +121,31 @@ from xml.etree.ElementTree import parse, fromstring
 
 
 # Find elements and extract values
-def xml_finder(game_element):
-    return value.find(game_element).attrib.get('value')
+# def xml_finder(game_element):
+#     return value.find(game_element).attrib.get('value')
+#
+#
+# url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
+# search_data = urlopen(url_xml)
+# tree = parse(search_data)
+#
+#
+# for value in tree.iter('item'):
+#     # Id
+#     print(value)
+#     game_id = value.attrib.get('id')
+#     print(game_id)
 
 
-url_xml = 'https://boardgamegeek.com/xmlapi2/thing?id=199792.xml'
-search_data = urlopen(url_xml)
-tree = parse(search_data)
+def write_game_var(game):
+    get_global_var("GAME")
+    print(GAME)
+    empty_variable("GAME")
+    GAME.append(game)
+    print(GAME)
 
 
-for value in tree.iter('item'):
-    # Id
-    print(value)
-    game_id = value.attrib.get('id')
-    print(game_id)
+write_game_var("mi_juego")
+get_global_var("GAME")
+for game in GAME:
+    print(game)
