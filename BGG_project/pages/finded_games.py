@@ -5,8 +5,9 @@ from BGG_project.python_code.constants import GAME_PRINTER
 from BGG_project.components.navbar import navbar
 from BGG_project.components.footer import footer
 from BGG_project.python_code.functions import *
+from BGG_project.python_code.functions import GAME
 
-GAME = []
+# GAME = []
 
 
 class FormInputState(rx.State):
@@ -33,9 +34,11 @@ class FormInputState(rx.State):
         # print(self.finded_games_list)
         #print(FIND_RESULTS_DICT)
 
+        # find_results_dict = get_find_results_dict()
+        find_results_dict = get_global_var("FIND_RESULTS_DICT")
 
-        for value in FIND_RESULTS_DICT:
-            game = [str(value), str(FIND_RESULTS_DICT[value])] # [id, game name])
+        for value in find_results_dict:
+            game = [str(value), str(find_results_dict[value])] # [id, game name])
             self.finded_games_list.append(game)
 
         # print(self.finded_games_list)
@@ -47,13 +50,17 @@ class State(rx.State):
     def change_page(self, game_id):
         # print(game_id)
         game = send_game_id_to_extract_info(game_id)
-        global GAME
-        try:
-            GAME.pop()
-        except:
-            pass
-        GAME.append(game)
+        # global GAME
         # print(GAME)
+        # try:
+        #     GAME.pop()
+        # except:
+        #     pass
+        write_game_var(game)
+        # GAME.append(game)
+        # print(GAME)
+        # for game in GAME:
+        #     print(game.game_name)
         return rx.redirect(
             GAME_PRINTER,
             # is_external=True,
@@ -72,15 +79,14 @@ def render_link(link_data: rx.Var):
     )
 
 
-# def render_link(link_data: rx.Var):
-#     """Render a single link item."""
-#     return rx.list(
-#         rx.link(
-#             link_data[1],  # Text
-#             href=link_data[0], # URL
-#             is_external=True,
-#         ),
-#     )
+def write_game_var(game):
+    get_global_var("GAME")
+    # print(GAME)
+    empty_variable("GAME")
+    GAME.append(game)
+    # print(GAME)
+    # for game in GAME:
+    #     print(game.game_name)
 
 
 @rx.page(route="/finded_games", title="Finded_games", on_load=FormInputState.generate_data)

@@ -3,8 +3,7 @@ from BGG_project.styles.styles import Size as Size
 import BGG_project.styles.styles as styles
 from BGG_project.components.navbar import navbar
 from BGG_project.components.footer import footer
-from .finded_games import GAME
-from .owned_user_games import GAME
+from  BGG_project.python_code.functions import GAME
 
 
 class FormInputState(rx.State):
@@ -24,6 +23,7 @@ class FormInputState(rx.State):
 
     def retrieve_game_info(self):
         for game in GAME:
+            # print(game.game_name)
             self.game_name = game.game_name
             self.image = game.image
             self.image_small = game.image_small
@@ -109,7 +109,6 @@ def game_printer() -> rx.Component:
                     text_decoration="underline",
                 ),
                 rx.text(
-                    # check_equals(FormInputState.min_players, FormInputState.max_players),
                     rx.cond(
                         (FormInputState.min_players != FormInputState.max_players),
                         rx.text(f"{FormInputState.min_players} - {FormInputState.max_players}"),
@@ -139,7 +138,6 @@ def game_printer() -> rx.Component:
                         rx.text(f"{FormInputState.min_playtime} - {FormInputState.max_playtime} min"),
                         rx.text(f"{FormInputState.min_playtime} min"),
                     ),
-                    # check_equals(FormInputState.min_playtime, FormInputState.max_playtime),
                     align="left",
                     justify="center",
                     size="4",

@@ -54,21 +54,6 @@ def game_data_extractor(url_xml):
                 boardgame_publisher = element.attrib.get('value')
                 publishers.append(boardgame_publisher)
 
-    # print(game_id)
-    #print(image_small)
-    #print(image)
-    #print(description)
-    #print(year_published)
-    #print(min_players)
-    #print(max_players)
-    #print(min_playtime)
-    #print(max_playtime)
-    #print(min_age)
-    #print(game_name)
-    #print(designers)
-    #print(artists)
-    #print(publishers)
-
     # Create an object (game) with all extracted parameters
     game = boardgame.Boardgame(game_id, game_name, image, image_small, description, year_published, min_players, max_players, min_playtime, max_playtime, min_age, designers, artists, publishers)
     
