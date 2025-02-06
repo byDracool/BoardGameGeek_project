@@ -29,7 +29,7 @@ class ToastState(rx.State):
             )
 
 
-@rx.page(route="/", title="home", on_load=ToastState.fetch_advertisement)
+@rx.page(route="/", title="BGG Games Finder", on_load=ToastState.fetch_advertisement)
 def index() -> rx.Component:  
     return rx.box(
         navbar(),
